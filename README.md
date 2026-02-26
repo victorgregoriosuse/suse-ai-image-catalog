@@ -20,6 +20,7 @@ An automated toolset designed to aggregate, process, and visualize container ima
 ## Tech Stack
 
 - **Backend**: Python 3.x
+- **Templating**: [Jinja2](https://jinja.palletsprojects.com/)
 - **Registry Tools**: [crane](https://github.com/google/go-containerregistry/tree/main/cmd/crane)
 - **Frontend**: Bootstrap 5, Bootstrap Icons, Vanilla JavaScript
 - **Data Format**: JSON
@@ -80,11 +81,13 @@ After running these commands, open index.html in your web browser to view the re
 ## Project Structure
 
 - `.github/workflows/static.yml`: GitHub Action for automated 4-hour updates and deployment.
-- `requirements.txt`: Python dependencies.
+- `requirements.txt`: Python dependencies (now including Jinja2).
+- `templates/`: Directory containing Jinja2 HTML templates.
+  - `dashboard.html.j2`: The main dashboard template.
 - `.gitignore`: Standard exclusion list for Python, environments, and generated data/reports.
 - `fetch_suse_ai_images.py`: Scraper for the Rancher Apps API (Supports containers and charts).
 - `fetch_suse_registry_images.py`: Inspector for the SUSE AI Registry.
-- `generate_dashboard.py`: Logic for data merging, version grouping, theme management, and HTML generation.
+- `generate_dashboard.py`: Logic for data merging, version grouping, and rendering the Jinja2 template.
 - `suse_ai_images.json`: Raw metadata from Rancher (Ignored by git).
 - `suse_registry_images.json`: Raw metadata from SUSE Registry (Ignored by git).
 - `index.html`: The final interactive report (Ignored by git, main deployment entry point).

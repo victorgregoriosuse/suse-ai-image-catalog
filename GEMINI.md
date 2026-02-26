@@ -11,7 +11,7 @@ This project consists of three main components:
 
 ### Tech Stack
 - **Language**: Python 3
-- **Libraries**: `requests` (for API calls)
+- **Libraries**: `requests` (for API calls), `Jinja2` (for HTML templating)
 - **External Tools**: `crane` (for OCI registry interactions)
 - **Frontend**: Bootstrap 5, Bootstrap Icons, JavaScript (for theme, search, and grouping logic)
 - **Fonts**: Official SUSE Typeface
@@ -24,7 +24,8 @@ This project consists of three main components:
 - `.github/workflows/static.yml`: GitHub Action workflow for automated deployment every 4 hours.
 - `fetch_suse_ai_images.py`: Fetches image and chart metadata from Rancher's API, including project logos.
 - `fetch_suse_registry_images.py`: Lists and inspects images in the `registry.suse.com/ai/` namespace using `crane`.
-- `generate_dashboard.py`: Core logic for merging data, grouping versions, and generating `index.html`.
+- `generate_dashboard.py`: Merges data, groups versions, and renders the dashboard using Jinja2.
+- `templates/`: Directory containing Jinja2 templates (e.g., `dashboard.html.j2`).
 - `suse_ai_images.json`: Raw data from Rancher API (Ignored by git).
 - `suse_registry_images.json`: Raw data from SUSE Registry (Ignored by git).
 - `index.html`: The final interactive, mobile-optimized dashboard (Ignored by git).
@@ -78,4 +79,5 @@ pip install -r requirements.txt
 - **Typography**: Must use the official SUSE font family.
 - **Official Branding**: Use official SUSE logos from provided CDN/docs URLs.
 - **Disclaimer**: Maintain the official "Persimmon" colored disclaimer bar at the top.
+- **Python Environment**: Always prefer creating and using a virtual environment (`venv`) instead of installing packages globally with `pip`.
 - **Push Policy**: **CRITICAL**. NEVER push changes to GitHub or any remote repository directly. Always ask for explicit user confirmation before any `git push` operation.
