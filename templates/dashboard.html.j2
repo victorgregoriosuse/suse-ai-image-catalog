@@ -316,23 +316,30 @@
                                             <th class="ps-5">Version <small class="text-muted fw-normal ms-2">(Click for details)</small></th>
                                             <th>Arch</th>
                                             <th>Base OS</th>
+                                            <th>SBOMs</th>
                                             <th>Last Updated</th>
                                             <th>Digest</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for v in group.versions %}
-                                        <tr class="version-row" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')">
-                                            <td class="ps-5">
+                                        <tr class="version-row">
+                                            <td class="ps-5" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')">
                                                 <i class="bi bi-tag me-2 text-muted"></i>{{ v.version }}
                                                 {% if v.tag and v.tag != v.version %}
                                                 <small class="text-muted ms-1">({{ v.tag }})</small>
                                                 {% endif %}
                                             </td>
-                                            <td><span class="badge badge-arch">{{ v.arch }}</span></td>
-                                            <td><small>{{ v.os }}</small></td>
-                                            <td><small>{{ v.last_updated | format_date }}</small></td>
-                                            <td><code style="font-size:0.7rem;">{{ v.digest[:15] }}...</code></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><span class="badge badge-arch">{{ v.arch }}</span></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><small>{{ v.os }}</small></td>
+                                            <td>
+                                                {% for sbom in v.sboms %}
+                                                <a href="{{ sbom.url }}" target="_blank" class="badge bg-info text-dark text-decoration-none me-1" style="font-size: 0.6rem;">{{ sbom.format }}</a>
+                                                {% endfor %}
+                                                {% if not v.sboms %}<small class="text-muted" style="font-size: 0.6rem;">N/A</small>{% endif %}
+                                            </td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><small>{{ v.last_updated | format_date }}</small></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><code style="font-size:0.7rem;">{{ v.digest[:15] }}...</code></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -406,8 +413,24 @@
         const updated = data.last_updated || data.created || 'N/A';
         const arch = data.architecture || 'N/A';
         const os = data.os || (data.os_family ? (data.os_family + ' ' + (data.os_version || '')) : 'N/A');
+        
+        let originHtml = '';
+        if (data.origin_url) {
+            originHtml = `<div class="mb-3"><strong>AppCo Artifact Page:</strong> <a href="${data.origin_url}" target="_blank" class="ms-1 text-decoration-none"><i class="bi bi-box-arrow-up-right me-1"></i>View on AppCo</a></div>`;
+        }
+
+        let sbomHtml = '';
+        if (data.processed_sboms && data.processed_sboms.length > 0) {
+            sbomHtml = '<div class="mb-3"><strong>SBOMs:</strong><div class="mt-1">';
+            data.processed_sboms.forEach(sbom => {
+                sbomHtml += `<a href="${sbom.url}" target="_blank" class="btn btn-sm btn-outline-info me-2 mb-2"><i class="bi bi-file-earmark-text me-1"></i>${sbom.format}</a>`;
+            });
+            sbomHtml += '</div></div>';
+        }
+
         document.getElementById('modalContent').innerHTML = `
             <div class="mb-4"><h6>Full Image Path</h6><div class="input-group"><input type="text" class="form-control" value="${fullName}" id="pathInput" readonly><button class="btn btn-outline-success btn-sm" onclick="copyPath(event)">Copy</button></div></div>
+            ${originHtml}
             <div class="row mb-3">
                 <div class="col-md-6"><strong>Digest:</strong> <code class="text-break">${digest}</code></div>
                 <div class="col-md-6"><strong>Updated:</strong> ${updated}</div>
@@ -416,6 +439,7 @@
                 <div class="col-md-4"><strong>Arch:</strong> <span class="badge badge-arch">${arch}</span></div>
                 <div class="col-md-4"><strong>Base OS:</strong> ${os}</div>
             </div>
+            ${sbomHtml}
             <div class="json-block mt-3">${JSON.stringify(data, null, 2)}</div>`;
         detailsModal.show();
     }

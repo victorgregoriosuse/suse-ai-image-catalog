@@ -14,6 +14,8 @@ An automated toolset designed to aggregate, process, and visualize container ima
   - **Interactive UX**: Sortable columns with clear indicators, search with quick-clear, "Expand All" and "Collapse All" controls, and persistent Dark Mode.
   - **Official Typography**: Uses the official SUSE brand font family for a professional look.
   - **Structured Metadata**: Detailed view modal with formatted digests, architectures (normalized to x86_64), and Base OS info.
+  - **SBOM Integration**: Displays links to SPDX and CycloneDX Software Bill of Materials for AppCo artifacts, with consistent alphabetical ordering.
+  - **Origin Linking**: Direct links to the original Rancher Application Catalog (AppCo) artifact pages for upstream documentation.
   - **Mobile Optimized**: Responsive design with a compact header grid and permanently visible theme toggle.
 - **Automated Deployment**: GitHub Action workflow to automatically update and publish the dashboard to GitHub Pages every 4 hours.
 

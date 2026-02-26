@@ -49,6 +49,27 @@ def generate_html():
         prefix = "dp.apps.rancher.io/charts/" if pkg_format == "HELM_CHART" else "dp.apps.rancher.io/containers/"
         full_path = f"{prefix}{image_name}" if image_name else "N/A"
         
+        # Process SBOMs
+        sboms = item.get("sboms", [])
+        processed_sboms = []
+        digest = item.get("digest", "")
+        # Extract the hash from "SHA256:hash"
+        hash_val = digest.split(":", 1)[1] if ":" in digest else digest
+        
+        origin_url = f"https://apps.rancher.io/artifacts/{hash_val}" if hash_val else None
+
+        for sbom in sboms:
+            filename = sbom.get("filename")
+            if filename and hash_val:
+                processed_sboms.append({
+                    "format": sbom.get("format"),
+                    "url": f"https://apps.rancher.io/artifacts/{hash_val}/resources/{filename}"
+                })
+        # Sort SBOMs by format name to ensure consistent UI order
+        processed_sboms.sort(key=lambda x: x.get("format", ""))
+        item["processed_sboms"] = processed_sboms
+        item["origin_url"] = origin_url
+
         os_family = item.get('os_family') or ''
         os_version = item.get('os_version') or ''
         os_str = f"{os_family} {os_version}".strip() or "N/A"
@@ -64,7 +85,8 @@ def generate_html():
             "digest": item.get("digest"),
             "details": item,
             "type": "Chart" if pkg_format == "HELM_CHART" else "Container",
-            "logo": item.get("app_logo_url")
+            "logo": item.get("app_logo_url"),
+            "sboms": processed_sboms
         })
 
     for item in registry_data:
@@ -83,7 +105,8 @@ def generate_html():
             "digest": item.get("digest"),
             "details": item,
             "type": "Chart" if is_chart else "Container",
-            "logo": None
+            "logo": None,
+            "sboms": []
         })
 
     groups = {}

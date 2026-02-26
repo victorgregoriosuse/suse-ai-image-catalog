@@ -7,7 +7,7 @@ A specialized Python toolset designed to aggregate, process, and visualize conta
 This project consists of three main components:
 1.  **Rancher API Scraper**: Queries `api.apps.rancher.io` to find all applications, components, and Helm charts within the `suse-ai` stack.
 2.  **Registry Inspector**: Uses the `crane` utility to list and inspect OCI images within the `registry.suse.com/ai/` namespace.
-3.  **Dashboard Generator**: Merges JSON data, groups versions, normalizes architectures, and creates a responsive, branded HTML dashboard. It also automates deployment via GitHub Actions.
+3.  **Dashboard Generator**: Merges JSON data, groups versions, normalizes architectures, and creates a responsive, branded HTML dashboard. It processes SBOM resources and provides direct links to upstream artifact pages. It also automates deployment via GitHub Actions.
 
 ### Tech Stack
 - **Language**: Python 3
@@ -66,6 +66,8 @@ pip install -r requirements.txt
 - **Data Format**: All scrapers must output JSON arrays of image/chart objects.
 - **Image Grouping**: The dashboard must group versions of the same artifact by their base name.
 - **Architecture Normalization**: Always normalize `amd64` to `x86_64` and display architectures as badges.
+- **SBOM Ordering**: **CRITICAL**. SBOM links must always be sorted alphabetically by format (e.g., `CYCLONEDX` then `SPDX`) for a consistent UI.
+- **Origin Links**: Always provide a link to the original AppCo artifact page (`https://apps.rancher.io/artifacts/{hash}`) in the detailed view.
 - **Image Paths**: The dashboard must show full pullable paths based on artifact type:
   - AppCo Containers: `dp.apps.rancher.io/containers/`
   - AppCo Charts: `dp.apps.rancher.io/charts/`
