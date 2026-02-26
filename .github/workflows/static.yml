@@ -34,7 +34,7 @@ jobs:
           pip install requests
 
       - name: Setup Crane
-        uses: imjasonh/setup-crane@v0.3.0
+        uses: imjasonh/setup-crane@v0.5
 
       - name: Fetch AppCo Data
         run: python fetch_suse_ai_images.py
