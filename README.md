@@ -31,6 +31,8 @@ An automated toolset designed to aggregate, process, and visualize container ima
 - **crane**: Must be installed and available in your PATH.
   - Installation on macOS: brew install crane
   - Installation on Linux: go install github.com/google/go-containerregistry/cmd/crane@latest
+- **Registry Credentials**: Optional but recommended for automated CI environments to avoid rate limits or access restricted namespaces.
+  - For GitHub Actions: Set `REGISTRY_USER` and `REGISTRY_PASSWORD` as Environment Secrets in the `github-pages` environment.
 
 ## Setup
 

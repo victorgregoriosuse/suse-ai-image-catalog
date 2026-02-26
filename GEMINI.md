@@ -34,6 +34,7 @@ This project consists of three main components:
 ### Prerequisites
 - Python 3.x
 - `crane` installed and in your PATH.
+- **Registry Credentials** (Optional): Set `REGISTRY_USER` and `REGISTRY_PASSWORD` environment secrets for the `github-pages` environment if running in GitHub Actions.
 
 ### Installation
 ```bash
