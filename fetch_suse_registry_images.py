@@ -25,9 +25,12 @@ def run_command(cmd):
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         cmd_str = ' '.join(cmd)
-        logger.error(f"Command failed: {cmd_str}")
-        logger.error(f"Exit Code: {e.returncode}")
-        logger.error(f"Stderr: {e.stderr}")
+        if "UNAUTHORIZED" in e.stderr:
+            logger.warning(f"Access to {cmd_str} is unauthorized. This repository might be private or require login.")
+        else:
+            logger.error(f"Command failed: {cmd_str}")
+            logger.error(f"Exit Code: {e.returncode}")
+            logger.error(f"Stderr: {e.stderr}")
         return None
     except Exception as e:
         logger.error(f"Unexpected error running command {' '.join(cmd)}: {e}")
