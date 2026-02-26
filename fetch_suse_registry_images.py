@@ -13,11 +13,24 @@ OUTPUT_FILE = "suse_registry_images.json"
 
 def run_command(cmd):
     try:
+        # Check if crane is even available before running
+        if cmd[0] == "crane":
+            try:
+                subprocess.run(["crane", "version"], capture_output=True, check=True)
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                logger.error("crane command not found in PATH")
+                return None
+
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         cmd_str = ' '.join(cmd)
-        logger.error(f"Command failed: {cmd_str}\nError: {e.stderr}")
+        logger.error(f"Command failed: {cmd_str}")
+        logger.error(f"Exit Code: {e.returncode}")
+        logger.error(f"Stderr: {e.stderr}")
+        return None
+    except Exception as e:
+        logger.error(f"Unexpected error running command {' '.join(cmd)}: {e}")
         return None
 
 def get_repositories():
@@ -79,16 +92,30 @@ def get_image_details(repo, tag):
     return image_data
 
 def main():
+    # Ensure the output file is always initialized as an empty list
+    with open(OUTPUT_FILE, 'w') as f:
+        json.dump([], f)
+
     repos = get_repositories()
+    if not repos:
+        logger.error(f"No repositories found in {NAMESPACE}")
+        return
+
     logger.info(f"Found {len(repos)} repositories in {NAMESPACE}")
     
     all_images = []
     for repo in repos:
         tags = get_tags(repo)
+        if not tags:
+            logger.warning(f"  No tags found for {repo}")
+            continue
+            
         for tag in tags:
             details = get_image_details(repo, tag)
             if details:
                 all_images.append(details)
+            else:
+                logger.warning(f"    Failed to get details for {repo}:{tag}")
                 
     logger.info(f"Found total of {len(all_images)} images.")
     

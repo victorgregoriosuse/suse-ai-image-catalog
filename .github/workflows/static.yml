@@ -40,7 +40,10 @@ jobs:
         run: python fetch_suse_ai_images.py
 
       - name: Fetch SUSE Registry Data
-        run: python fetch_suse_registry_images.py
+        run: |
+          python fetch_suse_registry_images.py
+          ls -l suse_registry_images.json
+          cat suse_registry_images.json | head -n 20
 
       - name: Generate Dashboard
         run: python generate_dashboard.py
