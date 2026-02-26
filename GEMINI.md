@@ -76,7 +76,7 @@ pip install -r requirements.txt
   - Using a compact grid for summary boxes (e.g., 2-column on small screens).
   - Ensuring the theme toggle is always visible and not hidden inside collapsed menus.
   - Using responsive typography and appropriate paddings to minimize vertical footprint.
-- **UI/UX**: Support for Dark Mode, sortable columns with directional icons, "Expand/Collapse All" buttons, and a permanent "Clear Search" button is mandatory.
+- **UI/UX**: Support for Dark Mode, sortable columns with directional icons, "Expand/Collapse All" buttons, and a permanent "Clear Search" button is mandatory. A link to the GitHub repository must be present in both the navbar and footer.
 - **Styling**: Adhere to SUSE brand colors (Pine: `#0c322c`, Jungle: `#30ba78`, Persimmon: `#fe7c3f`).
 - **Typography**: Must use the official SUSE font family.
 - **Official Branding**: Use official SUSE logos from provided CDN/docs URLs.

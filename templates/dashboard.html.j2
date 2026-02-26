@@ -209,6 +209,7 @@
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="{{ DOCS_URL }}" target="_blank"><i class="bi bi-book"></i> Docs</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ LANDING_URL }}" target="_blank"><i class="bi bi-info-circle"></i> SUSE AI</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ GITHUB_URL }}" target="_blank"><i class="bi bi-github"></i> GitHub</a></li>
             </ul>
         </div>
     </div>
@@ -490,7 +491,12 @@
 
 <footer class="mt-5 pb-4 text-center text-muted" style="font-size: 0.8rem;">
     <div class="container border-top pt-3">
-        <p>&copy; {{ current_year }} SUSE AI Container Toolset</p>
+        <p>
+            &copy; {{ current_year }} SUSE AI Container Toolset | 
+            <a href="{{ GITHUB_URL }}" class="text-muted text-decoration-none" target="_blank">
+                <i class="bi bi-github"></i> View source on GitHub
+            </a>
+        </p>
     </div>
 </footer>
 </body>

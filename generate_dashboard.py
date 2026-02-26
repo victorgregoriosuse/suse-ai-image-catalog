@@ -11,6 +11,7 @@ TEMPLATE_DIR = "templates"
 TEMPLATE_FILE = "dashboard.html.j2"
 
 # External Links
+GITHUB_URL = "https://github.com/e-minguez/suse-ai-image-catalog"
 APPCO_URL = "https://apps.rancher.io/stacks/suse-ai"
 DOCS_URL = "https://documentation.suse.com/suse-ai"
 LANDING_URL = "https://www.suse.com/solutions/ai/"
@@ -149,6 +150,7 @@ def generate_html():
     template = env.get_template(TEMPLATE_FILE)
     
     context = {
+        "GITHUB_URL": GITHUB_URL,
         "FAVICON_URL": FAVICON_URL,
         "LOGO_URL": LOGO_URL,
         "DOCS_URL": DOCS_URL,

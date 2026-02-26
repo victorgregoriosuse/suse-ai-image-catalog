@@ -16,6 +16,7 @@ An automated toolset designed to aggregate, process, and visualize container ima
   - **Structured Metadata**: Detailed view modal with formatted digests, architectures (normalized to x86_64), and Base OS info.
   - **SBOM Integration**: Displays links to SPDX and CycloneDX Software Bill of Materials for AppCo artifacts, with consistent alphabetical ordering.
   - **Origin Linking**: Direct links to the original Rancher Application Catalog (AppCo) artifact pages for upstream documentation.
+  - **GitHub Integration**: Direct link to the source repository in the dashboard navbar and footer.
   - **Mobile Optimized**: Responsive design with a compact header grid and permanently visible theme toggle.
 - **Automated Deployment**: GitHub Action workflow to automatically update and publish the dashboard to GitHub Pages every 4 hours.
 
@@ -41,8 +42,8 @@ An automated toolset designed to aggregate, process, and visualize container ima
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd suse-ai-containers
+   git clone https://github.com/e-minguez/suse-ai-image-catalog.git
+   cd suse-ai-image-catalog
    ```
 
 2. **Create and activate a virtual environment:**
