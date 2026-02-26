@@ -39,7 +39,10 @@ jobs:
 
       - name: Login to SUSE Registry
         run: crane auth login registry.suse.com -u "${{ secrets.REGISTRY_USER }}" -p "${{ secrets.REGISTRY_PASSWORD }}"
-        if: ${{ secrets.REGISTRY_USER != '' }}
+        if: env.REGISTRY_USER != ''
+        env:
+          REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Fetch AppCo Data
         run: python fetch_suse_ai_images.py
