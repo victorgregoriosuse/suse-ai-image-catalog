@@ -37,9 +37,16 @@ def get_repositories():
     logger.info(f"Fetching catalog for {REGISTRY}")
     output = run_command(["crane", "catalog", REGISTRY])
     if not output:
+        logger.error(f"No catalog output from {REGISTRY}")
         return []
     
-    repos = [line for line in output.splitlines() if line.startswith(NAMESPACE)]
+    lines = output.splitlines()
+    logger.info(f"Total repositories found in catalog: {len(lines)}")
+    if len(lines) > 0:
+        logger.info(f"First 5 repositories: {lines[:5]}")
+        logger.info(f"Last 5 repositories: {lines[-5:]}")
+    
+    repos = [line for line in lines if line.startswith(NAMESPACE)]
     return repos
 
 def get_tags(repo):
