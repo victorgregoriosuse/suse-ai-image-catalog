@@ -48,10 +48,7 @@ jobs:
         run: python fetch_suse_ai_images.py
 
       - name: Fetch SUSE Registry Data
-        run: |
-          python fetch_suse_registry_images.py
-          ls -l suse_registry_images.json
-          cat suse_registry_images.json | head -n 20
+        run: python fetch_suse_registry_images.py
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
