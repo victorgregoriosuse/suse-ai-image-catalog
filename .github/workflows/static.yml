@@ -37,7 +37,8 @@ jobs:
         uses: imjasonh/setup-crane@v0.5
 
       - name: Login to SUSE Registry
-        run: crane auth login registry.suse.com -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASSWORD }}
+        run: crane auth login registry.suse.com -u "${{ secrets.REGISTRY_USER }}" -p "${{ secrets.REGISTRY_PASSWORD }}"
+        if: ${{ secrets.REGISTRY_USER != '' }}
 
       - name: Fetch AppCo Data
         run: python fetch_suse_ai_images.py
@@ -47,6 +48,9 @@ jobs:
           python fetch_suse_registry_images.py
           ls -l suse_registry_images.json
           cat suse_registry_images.json | head -n 20
+        env:
+          REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Generate Dashboard
         run: python generate_dashboard.py
