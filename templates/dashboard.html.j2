@@ -286,7 +286,12 @@
                                     {{ group.type }}
                                 </span>
                             </td>
-                            <td><span class="badge badge-suse">{{ group.latest_version }}</span></td>
+                            <td>
+                                <span class="badge badge-suse">{{ group.latest_version }}</span>
+                                {% if group.latest_tag and group.latest_tag != group.latest_version %}
+                                <div style="font-size: 0.65rem;" class="text-muted mt-1">({{ group.latest_tag }})</div>
+                                {% endif %}
+                            </td>
                             <td><span class="badge badge-count" style="font-size:0.7rem; color:var(--suse-pine); background:var(--suse-mint); padding:2px 5px; border-radius:10px;">{{ group.count }}</span></td>
                             <td>
                                 {% if group.source == "AppCo" %}
@@ -318,7 +323,12 @@
                                     <tbody>
                                         {% for v in group.versions %}
                                         <tr class="version-row" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')">
-                                            <td class="ps-5"><i class="bi bi-tag me-2 text-muted"></i>{{ v.version }}</td>
+                                            <td class="ps-5">
+                                                <i class="bi bi-tag me-2 text-muted"></i>{{ v.version }}
+                                                {% if v.tag and v.tag != v.version %}
+                                                <small class="text-muted ms-1">({{ v.tag }})</small>
+                                                {% endif %}
+                                            </td>
                                             <td><span class="badge badge-arch">{{ v.arch }}</span></td>
                                             <td><small>{{ v.os }}</small></td>
                                             <td><small>{{ v.last_updated | format_date }}</small></td>

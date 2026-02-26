@@ -44,6 +44,7 @@ def generate_html():
     merged_data = []
     for item in rancher_data:
         image_name = item.get("image_name")
+        tag = image_name.split(":", 1)[1] if ":" in image_name else None
         pkg_format = item.get("packaging_format", "CONTAINER")
         prefix = "dp.apps.rancher.io/charts/" if pkg_format == "HELM_CHART" else "dp.apps.rancher.io/containers/"
         full_path = f"{prefix}{image_name}" if image_name else "N/A"
@@ -56,6 +57,7 @@ def generate_html():
             "source": "AppCo",
             "name": full_path,
             "version": item.get("version"),
+            "tag": tag,
             "arch": normalize_arch(item.get("architecture")),
             "os": os_str,
             "last_updated": item.get("last_updated"),
@@ -74,6 +76,7 @@ def generate_html():
             "source": "SUSE Registry",
             "name": full_path,
             "version": item.get("tag"),
+            "tag": item.get("tag"),
             "arch": normalize_arch(item.get("architecture")),
             "os": item.get("os") or "N/A",
             "last_updated": item.get("created"),
@@ -102,6 +105,7 @@ def generate_html():
         group_data['versions'].sort(key=lambda x: x.get('last_updated') or '', reverse=True)
         latest = group_data['versions'][0]
         group_data['latest_version'] = latest['version']
+        group_data['latest_tag'] = latest['tag']
         group_data['count'] = len(group_data['versions'])
         unique_archs = sorted(list(set(v['arch'] for v in group_data['versions'] if v['arch'] and v['arch'] != "N/A")))
         group_data['arch_list'] = unique_archs
