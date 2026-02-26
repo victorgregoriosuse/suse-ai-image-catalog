@@ -33,20 +33,37 @@ def run_command(cmd):
         logger.error(f"Unexpected error running command {' '.join(cmd)}: {e}")
         return None
 
+# Known repositories to check if catalog is incomplete
+KNOWN_REPOS = [
+    "ai/charts/litellm",
+    "ai/charts/qdrant",
+    "ai/containers/litellm",
+    "ai/containers/litellm-database",
+    "ai/containers/qdrant",
+    "ai/hello-world"
+]
+
 def get_repositories():
     logger.info(f"Fetching catalog for {REGISTRY}")
     output = run_command(["crane", "catalog", REGISTRY])
-    if not output:
+    
+    repos = []
+    if output:
+        lines = output.splitlines()
+        logger.info(f"Total repositories found in catalog: {len(lines)}")
+        repos = [line for line in lines if line.startswith(NAMESPACE)]
+    else:
         logger.error(f"No catalog output from {REGISTRY}")
-        return []
+
+    # If no repositories found in catalog, try known ones
+    if not repos:
+        logger.warning(f"No repositories found in catalog for namespace {NAMESPACE}. Trying known list...")
+        for repo in KNOWN_REPOS:
+            # Verify repository exists by trying to list tags
+            logger.info(f"  Verifying {repo}...")
+            if run_command(["crane", "ls", f"{REGISTRY}/{repo}"]):
+                repos.append(repo)
     
-    lines = output.splitlines()
-    logger.info(f"Total repositories found in catalog: {len(lines)}")
-    if len(lines) > 0:
-        logger.info(f"First 5 repositories: {lines[:5]}")
-        logger.info(f"Last 5 repositories: {lines[-5:]}")
-    
-    repos = [line for line in lines if line.startswith(NAMESPACE)]
     return repos
 
 def get_tags(repo):
