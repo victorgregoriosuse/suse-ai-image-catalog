@@ -19,6 +19,7 @@ This project consists of three main components:
 ## Key Files
 
 - `README.md`: Project documentation and user guide.
+- `requirements.txt`: Python dependencies.
 - `.gitignore`: Standard exclusion list for Python and generated artifacts.
 - `.github/workflows/static.yml`: GitHub Action workflow for automated deployment every 4 hours.
 - `fetch_suse_ai_images.py`: Fetches image and chart metadata from Rancher's API, including project logos.
@@ -38,7 +39,7 @@ This project consists of three main components:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install requests
+pip install -r requirements.txt
 ```
 
 ### Running the Toolset

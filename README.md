@@ -48,7 +48,7 @@ An automated toolset designed to aggregate, process, and visualize container ima
 
 3. **Install dependencies:**
    ```bash
-   pip install requests
+   pip install -r requirements.txt
    ```
 
 ## Usage
@@ -78,6 +78,7 @@ After running these commands, open index.html in your web browser to view the re
 ## Project Structure
 
 - `.github/workflows/static.yml`: GitHub Action for automated 4-hour updates and deployment.
+- `requirements.txt`: Python dependencies.
 - `.gitignore`: Standard exclusion list for Python, environments, and generated data/reports.
 - `fetch_suse_ai_images.py`: Scraper for the Rancher Apps API (Supports containers and charts).
 - `fetch_suse_registry_images.py`: Inspector for the SUSE AI Registry.
