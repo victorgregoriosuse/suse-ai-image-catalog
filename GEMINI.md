@@ -78,3 +78,4 @@ pip install -r requirements.txt
 - **Typography**: Must use the official SUSE font family.
 - **Official Branding**: Use official SUSE logos from provided CDN/docs URLs.
 - **Disclaimer**: Maintain the official "Persimmon" colored disclaimer bar at the top.
+- **Push Policy**: **CRITICAL**. NEVER push changes to GitHub or any remote repository directly. Always ask for explicit user confirmation before any `git push` operation.
