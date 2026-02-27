@@ -347,23 +347,23 @@
                                     <tbody>
                                         {% for v in group.versions %}
                                         <tr class="version-row" id="{{ v.anchor_id }}">
-                                            <td class="ps-5" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')">
+                                            <td class="ps-5" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}', '{{ v.anchor_id }}')">
                                                 <i class="bi bi-tag me-2 text-muted"></i>{{ v.version }}
                                                 {% if v.tag and v.tag != v.version %}
                                                 <small class="text-muted ms-1">({{ v.tag }})</small>
                                                 {% endif %}
                                                 <i class="bi bi-link-45deg anchor-link" title="Copy link to this version" onclick="copyAnchor(event, '{{ v.anchor_id }}')"></i>
                                             </td>
-                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><span class="badge badge-arch">{{ v.arch }}</span></td>
-                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><small>{{ v.os }}</small></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}', '{{ v.anchor_id }}')"><span class="badge badge-arch">{{ v.arch }}</span></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}', '{{ v.anchor_id }}')"><small>{{ v.os }}</small></td>
                                             <td>
                                                 {% for sbom in v.sboms %}
                                                 <a href="{{ sbom.url }}" target="_blank" class="badge bg-info text-dark text-decoration-none me-1" style="font-size: 0.6rem;">{{ sbom.format }}</a>
                                                 {% endfor %}
                                                 {% if not v.sboms %}<small class="text-muted" style="font-size: 0.6rem;">N/A</small>{% endif %}
                                             </td>
-                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><small>{{ v.last_updated | format_date }}</small></td>
-                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><code style="font-size:0.7rem;">{{ v.digest[:15] }}...</code></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}', '{{ v.anchor_id }}')"><small>{{ v.last_updated | format_date }}</small></td>
+                                            <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}', '{{ v.anchor_id }}')"><code style="font-size:0.7rem;">{{ v.digest[:15] }}...</code></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -428,7 +428,7 @@
     clearSearch.addEventListener('click', () => { searchInput.value = ''; filterTable(); searchInput.focus(); });
 
     const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
-    function showDetails(dataStr, fullName, logoUrl) {
+    function showDetails(dataStr, fullName, logoUrl, anchorId) {
         const data = JSON.parse(decodeURIComponent(dataStr));
         document.getElementById('modalTitle').textContent = data.image_name || data.name;
         const logoContainer = document.getElementById('modalLogoContainer');
@@ -438,6 +438,8 @@
         const arch = data.architecture || 'N/A';
         const os = data.os || (data.os_family ? (data.os_family + ' ' + (data.os_version || '')) : 'N/A');
         
+        if (anchorId) history.replaceState(null, null, '#' + anchorId);
+
         let originHtml = '';
         if (data.origin_url) {
             originHtml = `<div class="mb-3"><strong>AppCo Artifact Page:</strong> <a href="${data.origin_url}" target="_blank" class="ms-1 text-decoration-none"><i class="bi bi-box-arrow-up-right me-1"></i>View on AppCo</a></div>`;
@@ -467,6 +469,19 @@
             <div class="json-block mt-3">${JSON.stringify(data, null, 2)}</div>`;
         detailsModal.show();
     }
+
+    document.getElementById('detailsModal').addEventListener('hidden.bs.modal', function () {
+        const activeGroup = document.querySelector('.collapse.show');
+        if (activeGroup) {
+            const trigger = document.querySelector(`[data-bs-target="#${activeGroup.id}"]`);
+            if (trigger && trigger.id) {
+                history.replaceState(null, null, '#' + trigger.id);
+                return;
+            }
+        }
+        history.replaceState(null, null, ' ');
+    });
+
     function copyPath(event) {
         const el = document.getElementById('pathInput');
         el.select();
@@ -507,10 +522,36 @@
                         const trigger = document.querySelector(`[data-bs-target="#${groupCollapse.id}"]`);
                         if (trigger) trigger.classList.remove('collapsed');
                     }
+                    // Trigger click on the first cell to open details
+                    setTimeout(() => target.cells[0].click(), 500);
+                } else if (target.classList.contains('group-header')) {
+                    const groupCollapse = document.querySelector(target.getAttribute('data-bs-target'));
+                    if (groupCollapse) {
+                        const bsCollapse = new bootstrap.Collapse(groupCollapse, { toggle: false });
+                        bsCollapse.show();
+                        target.classList.remove('collapsed');
+                    }
                 }
                 setTimeout(() => {
                     target.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 300);
+            }
+        }
+    });
+
+    // Update URL on collapse
+    document.addEventListener('shown.bs.collapse', function (event) {
+        if (event.target.classList.contains('collapse')) {
+            const trigger = document.querySelector(`[data-bs-target="#${event.target.id}"]`);
+            if (trigger && trigger.id && !document.querySelector('.modal.show')) {
+                history.replaceState(null, null, '#' + trigger.id);
+            }
+        }
+    });
+    document.addEventListener('hidden.bs.collapse', function (event) {
+        if (event.target.classList.contains('collapse') && !document.querySelector('.collapse.show')) {
+            if (!document.querySelector('.modal.show')) {
+                history.replaceState(null, null, ' ');
             }
         }
     });
