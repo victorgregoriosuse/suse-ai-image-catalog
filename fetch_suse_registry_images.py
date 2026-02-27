@@ -2,6 +2,9 @@ import subprocess
 import json
 import logging
 import re
+import os
+import shutil
+from base64 import b64decode
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -10,6 +13,92 @@ logger = logging.getLogger(__name__)
 REGISTRY = "registry.suse.com"
 NAMESPACE = "ai/"
 OUTPUT_FILE = "suse_registry_images.json"
+SBOM_DIR = "sboms"
+
+def cosign_is_installed():
+    """Check if cosign is installed."""
+    return shutil.which("cosign") is not None
+
+def extract_sbom(full_image, image_data):
+    """
+    Extracts the CycloneDX SBOM from a container image using cosign.
+    """
+    if not full_image.startswith(f"{REGISTRY}/ai/containers/"):
+        return
+
+    if not cosign_is_installed():
+        logger.warning("cosign is not installed, skipping SBOM extraction.")
+        return
+
+    logger.info(f"    Extracting SBOM for {full_image}")
+
+    # Sanitize the image name for the filename
+    safe_name = re.sub(r'[:/]', '-', full_image.replace(f"{REGISTRY}/", ""))
+    sbom_filename = f"{safe_name}-cyclonedx.json"
+    sbom_filepath = os.path.join(SBOM_DIR, sbom_filename)
+
+    cmd = [
+        "cosign", "verify-attestation",
+        "--type", "cyclonedx",
+        "--key", "https://documentation.suse.com/suse-ai/files/sr-pubkey.pem",
+        full_image
+    ]
+    
+    # Add credentials if available
+    registry_user = os.getenv("REGISTRY_USER")
+    registry_pass = os.getenv("REGISTRY_PASSWORD")
+    if registry_user and registry_pass:
+        cmd.extend(["--registry-username", registry_user, "--registry-password", registry_pass])
+
+    # Set a local cache directory for cosign to avoid permission issues in some environments
+    env = os.environ.copy()
+    cosign_cache = os.path.join(os.getcwd(), ".cosign-cache")
+    if not os.path.exists(cosign_cache):
+        os.makedirs(cosign_cache)
+    env["COSIGN_CACHE"] = cosign_cache
+
+    try:
+        # We capture stderr to log it if the command fails
+        result = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+            env=env
+        )
+        
+        attestation = json.loads(result.stdout)
+        payload = json.loads(b64decode(attestation['payload']))
+        
+        # The actual SBOM is in the 'predicate' field
+        sbom_data = payload.get('predicate')
+
+        if sbom_data:
+            with open(sbom_filepath, 'w') as f:
+                json.dump(sbom_data, f, indent=2)
+            
+            logger.info(f"      Successfully extracted SBOM to {sbom_filepath}")
+            if "sboms" not in image_data:
+                image_data["sboms"] = []
+            
+            image_data["sboms"].append({
+                "path": sbom_filepath,
+                "format": "CycloneDX"
+            })
+        else:
+            logger.warning(f"      No SBOM predicate found for {full_image}")
+
+    except subprocess.CalledProcessError as e:
+        # Log the stderr for better debugging
+        logger.warning(f"      Could not find CycloneDX SBOM for {full_image}.")
+        if e.stderr:
+            logger.debug(f"      Cosign error: {e.stderr.strip()}")
+    except (json.JSONDecodeError, KeyError) as e:
+        logger.error(f"      Failed to parse cosign output for {full_image}: {e}")
+    except Exception as e:
+        logger.error(f"      An unexpected error occurred during SBOM extraction for {full_image}: {e}")
+
 
 def run_command(cmd):
     try:
@@ -35,6 +124,7 @@ def run_command(cmd):
     except Exception as e:
         logger.error(f"Unexpected error running command {' '.join(cmd)}: {e}")
         return None
+
 
 # Known repositories to check if catalog is incomplete
 KNOWN_REPOS = [
@@ -115,10 +205,17 @@ def get_image_details(repo, tag):
         "entrypoint": config.get("config", {}).get("Entrypoint"),
         "cmd": config.get("config", {}).get("Cmd")
     }
+
+    # Extract embedded SBOMs for container images
+    extract_sbom(full_image, image_data)
     
     return image_data
 
 def main():
+    # Create SBOMs directory if it doesn't exist
+    if not os.path.exists(SBOM_DIR):
+        os.makedirs(SBOM_DIR)
+
     # Ensure the output file is always initialized as an empty list
     with open(OUTPUT_FILE, 'w') as f:
         json.dump([], f)

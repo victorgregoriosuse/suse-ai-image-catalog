@@ -94,6 +94,19 @@ def generate_html():
         image_name = item.get("image_name")
         full_path = f"registry.suse.com/{image_name}" if image_name else "N/A"
         is_chart = "/charts/" in full_path.lower()
+
+        # Process local SBOMs
+        processed_sboms = []
+        if "sboms" in item:
+            for sbom in item["sboms"]:
+                processed_sboms.append({
+                    "format": sbom.get("format"),
+                    "url": sbom.get("path")  # The path is already correct
+                })
+        
+        # Sort SBOMs by format name
+        processed_sboms.sort(key=lambda x: x.get("format", ""))
+        item["processed_sboms"] = processed_sboms
         
         merged_data.append({
             "source": "SUSE Registry",
@@ -107,7 +120,7 @@ def generate_html():
             "details": item,
             "type": "Chart" if is_chart else "Container",
             "logo": None,
-            "sboms": []
+            "sboms": processed_sboms
         })
 
     groups = {}

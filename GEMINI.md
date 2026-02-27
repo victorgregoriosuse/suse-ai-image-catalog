@@ -6,13 +6,13 @@ A specialized Python toolset designed to aggregate, process, and visualize conta
 
 This project consists of three main components:
 1.  **Rancher API Scraper**: Queries `api.apps.rancher.io` to find all applications, components, and Helm charts within the `suse-ai` stack.
-2.  **Registry Inspector**: Uses the `crane` utility to list and inspect OCI images within the `registry.suse.com/ai/` namespace.
-3.  **Dashboard Generator**: Merges JSON data, groups versions, normalizes architectures, and creates a responsive, branded HTML dashboard. It processes SBOM resources and provides direct links to upstream artifact pages. It also automates deployment via GitHub Actions.
+2.  **Registry Inspector**: Uses the `crane` utility to list and inspect OCI images within the `registry.suse.com/ai/` namespace. It also uses `cosign` to extract embedded CycloneDX SBOMs for container images.
+3.  **Dashboard Generator**: Merges JSON data, groups versions, normalizes architectures, and creates a responsive, branded HTML dashboard. It processes SBOM resources (both from Rancher API and extracted from the Registry) and provides direct links to artifact pages. It also automates deployment via GitHub Actions.
 
 ### Tech Stack
 - **Language**: Python 3
 - **Libraries**: `requests` (for API calls), `Jinja2` (for HTML templating)
-- **External Tools**: `crane` (for OCI registry interactions)
+- **External Tools**: `crane` (for OCI registry interactions), `cosign` (for SBOM extraction)
 - **Frontend**: Bootstrap 5, Bootstrap Icons, JavaScript (for theme, search, and grouping logic)
 - **Fonts**: Official SUSE Typeface
 
@@ -23,9 +23,10 @@ This project consists of three main components:
 - `.gitignore`: Standard exclusion list for Python and generated artifacts.
 - `.github/workflows/static.yml`: GitHub Action workflow for automated deployment every 4 hours.
 - `fetch_suse_ai_images.py`: Fetches image and chart metadata from Rancher's API, including project logos.
-- `fetch_suse_registry_images.py`: Lists and inspects images in the `registry.suse.com/ai/` namespace using `crane`.
+- `fetch_suse_registry_images.py`: Lists and inspects images in the `registry.suse.com/ai/` namespace and extracts SBOMs.
 - `generate_dashboard.py`: Merges data, groups versions, and renders the dashboard using Jinja2.
 - `templates/`: Directory containing Jinja2 templates (e.g., `dashboard.html.j2`).
+- `sboms/`: Directory where extracted CycloneDX SBOMs are stored (Ignored by git).
 - `suse_ai_images.json`: Raw data from Rancher API (Ignored by git).
 - `suse_registry_images.json`: Raw data from SUSE Registry (Ignored by git).
 - `index.html`: The final interactive, mobile-optimized dashboard (Ignored by git).
@@ -35,6 +36,7 @@ This project consists of three main components:
 ### Prerequisites
 - Python 3.x
 - `crane` installed and in your PATH.
+- `cosign` installed and in your PATH.
 - **Registry Credentials** (Optional): Set `REGISTRY_USER` and `REGISTRY_PASSWORD` environment secrets for the `github-pages` environment if running in GitHub Actions.
 
 ### Installation
