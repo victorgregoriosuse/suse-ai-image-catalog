@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
@@ -23,6 +24,11 @@ def load_json(path):
         with open(path, 'r') as f:
             return json.load(f)
     return []
+
+def slugify(text):
+    if not text: return ""
+    # Replace non-alphanumeric with hyphen, then collapse hyphens
+    return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
 
 def normalize_arch(arch):
     if not arch: return "N/A"
@@ -75,19 +81,24 @@ def generate_html():
         os_version = item.get('os_version') or ''
         os_str = f"{os_family} {os_version}".strip() or "N/A"
         
+        arch = normalize_arch(item.get("architecture"))
+        version = item.get("version")
+        anchor_id = slugify(f"{image_name}-{version}-{arch}")
+
         merged_data.append({
             "source": "AppCo",
             "name": full_path,
-            "version": item.get("version"),
+            "version": version,
             "tag": tag,
-            "arch": normalize_arch(item.get("architecture")),
+            "arch": arch,
             "os": os_str,
             "last_updated": item.get("last_updated"),
             "digest": item.get("digest"),
             "details": item,
             "type": "Chart" if pkg_format == "HELM_CHART" else "Container",
             "logo": item.get("app_logo_url"),
-            "sboms": processed_sboms
+            "sboms": processed_sboms,
+            "anchor_id": anchor_id
         })
 
     for item in registry_data:
@@ -108,19 +119,24 @@ def generate_html():
         processed_sboms.sort(key=lambda x: x.get("format", ""))
         item["processed_sboms"] = processed_sboms
         
+        arch = normalize_arch(item.get("architecture"))
+        version = item.get("tag")
+        anchor_id = slugify(f"{image_name}-{version}-{arch}")
+
         merged_data.append({
             "source": "SUSE Registry",
             "name": full_path,
-            "version": item.get("tag"),
+            "version": version,
             "tag": item.get("tag"),
-            "arch": normalize_arch(item.get("architecture")),
+            "arch": arch,
             "os": item.get("os") or "N/A",
             "last_updated": item.get("created"),
             "digest": item.get("digest"),
             "details": item,
             "type": "Chart" if is_chart else "Container",
             "logo": None,
-            "sboms": processed_sboms
+            "sboms": processed_sboms,
+            "anchor_id": anchor_id
         })
 
     groups = {}
@@ -133,7 +149,8 @@ def generate_html():
                 "source": item['source'], 
                 "versions": [], 
                 "type": item['type'],
-                "logo": item['logo']
+                "logo": item['logo'],
+                "anchor_id": slugify(base_name)
             }
         groups[base_name]['versions'].append(item)
 

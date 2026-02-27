@@ -39,6 +39,11 @@
             --table-border: #373b3e;
             --input-bg: #2b3035;
         }
+        [data-bs-theme="dark"] .table-light {
+            --bs-table-bg: #2b3035;
+            --bs-table-color: #f8f9fa;
+            border-color: #373b3e;
+        }
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -177,6 +182,22 @@
             padding: 8px 0;
             text-align: center;
         }
+
+        /* Targeted highlighting */
+        :target {
+            background-color: var(--table-hover) !important;
+            box-shadow: inset 0 0 0 2px var(--suse-jungle);
+        }
+        .anchor-link {
+            visibility: hidden;
+            color: var(--suse-jungle);
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .group-header:hover .anchor-link, .version-row:hover .anchor-link {
+            visibility: visible;
+        }
         
         @media (max-width: 768px) {
             .summary-card h3 { font-size: 1.2rem; margin-bottom: 0; }
@@ -276,11 +297,12 @@
                     <tbody>
                         {% for group in groups %}
                         {% set gid = "group-" ~ loop.index %}
-                        <tr class="group-header collapsed" data-bs-toggle="collapse" data-bs-target="#{{ gid }}">
+                        <tr class="group-header collapsed" data-bs-toggle="collapse" data-bs-target="#{{ gid }}" id="{{ group.anchor_id }}">
                             <td>
                                 <i class="bi bi-caret-right-fill rotate-icon me-2"></i>
                                 {% if group.logo %}<img src="{{ group.logo }}" class="project-logo">{% endif %}
                                 <strong>{{ group.base_name }}</strong>
+                                <i class="bi bi-link-45deg anchor-link" title="Copy link to this image" onclick="copyAnchor(event, '{{ group.anchor_id }}')"></i>
                             </td>
                             <td>
                                 <span class="badge badge-type {{ 'type-chart' if group.type == 'Chart' else 'type-container' }}">
@@ -324,12 +346,13 @@
                                     </thead>
                                     <tbody>
                                         {% for v in group.versions %}
-                                        <tr class="version-row">
+                                        <tr class="version-row" id="{{ v.anchor_id }}">
                                             <td class="ps-5" onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')">
                                                 <i class="bi bi-tag me-2 text-muted"></i>{{ v.version }}
                                                 {% if v.tag and v.tag != v.version %}
                                                 <small class="text-muted ms-1">({{ v.tag }})</small>
                                                 {% endif %}
+                                                <i class="bi bi-link-45deg anchor-link" title="Copy link to this version" onclick="copyAnchor(event, '{{ v.anchor_id }}')"></i>
                                             </td>
                                             <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><span class="badge badge-arch">{{ v.arch }}</span></td>
                                             <td onclick="showDetails('{{ v.details | to_json_encoded }}', '{{ v.name }}', '{{ group.logo or 'None' }}')"><small>{{ v.os }}</small></td>
@@ -458,6 +481,39 @@
     function collapseAll() {
         document.querySelectorAll('tr.group-header:not(.collapsed)').forEach(row => row.click());
     }
+
+    function copyAnchor(event, anchorId) {
+        event.stopPropagation();
+        const url = new URL(window.location.href);
+        url.hash = anchorId;
+        navigator.clipboard.writeText(url.toString());
+        const icon = event.target;
+        icon.className = 'bi bi-check2 anchor-link';
+        setTimeout(() => icon.className = 'bi bi-link-45deg anchor-link', 2000);
+        window.location.hash = anchorId;
+    }
+
+    // Handle deep linking on load
+    window.addEventListener('load', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                if (target.classList.contains('version-row')) {
+                    const groupCollapse = target.closest('.collapse');
+                    if (groupCollapse) {
+                        const bsCollapse = new bootstrap.Collapse(groupCollapse, { toggle: false });
+                        bsCollapse.show();
+                        const trigger = document.querySelector(`[data-bs-target="#${groupCollapse.id}"]`);
+                        if (trigger) trigger.classList.remove('collapsed');
+                    }
+                }
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
+        }
+    });
 
     let currentSort = { col: -1, dir: 'asc' };
     function sortTable(n) {

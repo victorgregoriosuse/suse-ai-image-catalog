@@ -70,6 +70,7 @@ pip install -r requirements.txt
 - **Architecture Normalization**: Always normalize `amd64` to `x86_64` and display architectures as badges.
 - **SBOM Ordering**: **CRITICAL**. SBOM links must always be sorted alphabetically by format (e.g., `CYCLONEDX` then `SPDX`) for a consistent UI.
 - **Origin Links**: Always provide a link to the original AppCo artifact page (`https://apps.rancher.io/artifacts/{hash}`) in the detailed view.
+- **Deep-Linking**: **CRITICAL**. The dashboard must support direct anchors for image groups and individual versions. All rows must have unique, slugified IDs, and the UI must automatically expand targeted groups and scroll to targeted versions on page load.
 - **Image Paths**: The dashboard must show full pullable paths based on artifact type:
   - AppCo Containers: `dp.apps.rancher.io/containers/`
   - AppCo Charts: `dp.apps.rancher.io/charts/`
