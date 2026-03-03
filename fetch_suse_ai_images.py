@@ -95,6 +95,9 @@ def main():
                             cache_key = (app_slug, comp_slug, image_name, version_num, arch)
                             is_new = cache_key not in cache
                             
+                            artifact_type = "Chart" if pkg_format == "HELM_CHART" else "Container"
+                            display_arch = arch if arch else "N/A"
+
                             if not is_new:
                                 cached_item = cache[cache_key]
                                 if cached_item.get("digest") == digest:
@@ -103,9 +106,9 @@ def main():
                                     results.append(cached_item)
                                     continue
                                 else:
-                                    changes.append(f"Updated AppCo artifact: {image_name} version {version_num} ({arch})")
+                                    changes.append(f"Updated {artifact_type} (AppCo): {image_name} ({display_arch})")
                             else:
-                                changes.append(f"New AppCo {pkg_format.lower().replace('_', ' ')}: {image_name} version {version_num} ({arch})")
+                                changes.append(f"New {artifact_type} (AppCo): {image_name} ({display_arch})")
 
                             logger.info(f"    {'New' if is_new else 'Updated'} artifact: {image_name} version {version_num}")
                             image_data = {

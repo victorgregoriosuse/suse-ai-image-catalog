@@ -184,11 +184,21 @@ def get_image_details(repo, tag, cache=None):
         if cached_item.get("digest") == digest:
             logger.info(f"    Cache hit for {full_image} (digest: {digest})")
             return cached_item, None
-        else:
-            change_msg = f"Updated Registry image: {repo}:{tag} ({digest})"
-    else:
-        change_msg = f"New Registry image: {repo}:{tag} ({digest})"
-
+        
+        # We need config to get arch for updated artifacts too
+        config_json = run_command(["crane", "config", full_image])
+        if config_json:
+            try:
+                config = json.loads(config_json)
+                raw_arch = config.get("architecture", "N/A")
+                arch = "x86_64" if raw_arch == "amd64" else raw_arch
+                is_chart = "/charts/" in repo.lower()
+                artifact_type = "Chart" if is_chart else "Container"
+                change_msg = f"Updated {artifact_type} (Registry): {repo}:{tag} ({arch})"
+            except:
+                pass
+    
+    # If it's new, we'll get arch below after the cache block
     logger.info(f"    Inspecting {full_image} (Cache miss or digest changed)")
     
     config_json = run_command(["crane", "config", full_image])
@@ -197,6 +207,12 @@ def get_image_details(repo, tag, cache=None):
     
     try:
         config = json.loads(config_json)
+        raw_arch = config.get("architecture", "N/A")
+        arch = "x86_64" if raw_arch == "amd64" else raw_arch
+        if not change_msg:
+            is_chart = "/charts/" in repo.lower()
+            artifact_type = "Chart" if is_chart else "Container"
+            change_msg = f"New {artifact_type} (Registry): {repo}:{tag} ({arch})"
     except json.JSONDecodeError:
         logger.error(f"Failed to decode config for {full_image}")
         return None, None
