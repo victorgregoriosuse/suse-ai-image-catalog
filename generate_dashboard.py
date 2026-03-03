@@ -199,8 +199,7 @@ def generate_html():
         "registry_count": len(registry_data),
         "generated_at": datetime.now().strftime('%Y-%m-%d %H:%M'),
         "groups": final_groups,
-        "changelog": changelog_data,
-        "current_year": datetime.now().year
+        "changelog": changelog_data
     }
 
     output = template.render(context)
