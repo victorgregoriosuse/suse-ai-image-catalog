@@ -41,7 +41,7 @@ def extract_sbom(full_image, image_data):
         "cosign", "verify-attestation",
         "--type", "cyclonedx",
         "--key", "https://documentation.suse.com/suse-ai/files/sr-pubkey.pem",
-        full_image
+        "--insecure-ignore-tlog"
     ]
     
     # Add credentials if available
@@ -49,6 +49,9 @@ def extract_sbom(full_image, image_data):
     registry_pass = os.getenv("REGISTRY_PASSWORD")
     if registry_user and registry_pass:
         cmd.extend(["--registry-username", registry_user, "--registry-password", registry_pass])
+    
+    # Image must be the last argument
+    cmd.append(full_image)
 
     # Set a local cache directory for cosign to avoid permission issues in some environments
     env = os.environ.copy()
@@ -56,6 +59,8 @@ def extract_sbom(full_image, image_data):
     if not os.path.exists(cosign_cache):
         os.makedirs(cosign_cache)
     env["COSIGN_CACHE"] = cosign_cache
+    env["SIGSTORE_ROOT"] = cosign_cache
+    env["TUF_ENABLED"] = "0"
 
     try:
         # We capture stderr to log it if the command fails
@@ -68,26 +73,38 @@ def extract_sbom(full_image, image_data):
             env=env
         )
         
-        attestation = json.loads(result.stdout)
-        payload = json.loads(b64decode(attestation['payload']))
-        
-        # The actual SBOM is in the 'predicate' field
-        sbom_data = payload.get('predicate')
+        # cosign can return multiple attestations, one per line (NDJSON)
+        found_sbom = False
+        for line in result.stdout.strip().splitlines():
+            try:
+                attestation = json.loads(line)
+                payload = json.loads(b64decode(attestation['payload']))
+                
+                # The actual SBOM is in the 'predicate' field
+                sbom_data = payload.get('predicate')
 
-        if sbom_data:
-            with open(sbom_filepath, 'w') as f:
-                json.dump(sbom_data, f, indent=2)
-            
-            logger.info(f"      Successfully extracted SBOM to {sbom_filepath}")
-            if "sboms" not in image_data:
-                image_data["sboms"] = []
-            
-            image_data["sboms"].append({
-                "path": sbom_filepath,
-                "format": "CycloneDX"
-            })
-        else:
-            logger.warning(f"      No SBOM predicate found for {full_image}")
+                if sbom_data:
+                    with open(sbom_filepath, 'w') as f:
+                        json.dump(sbom_data, f, indent=2)
+                    
+                    logger.info(f"      Successfully extracted SBOM to {sbom_filepath}")
+                    if "sboms" not in image_data:
+                        image_data["sboms"] = []
+                    
+                    # Avoid duplicates
+                    if not any(s.get("path") == sbom_filepath for s in image_data["sboms"]):
+                        image_data["sboms"].append({
+                            "path": sbom_filepath,
+                            "format": "CycloneDX"
+                        })
+                    found_sbom = True
+                    break # We found the CycloneDX SBOM, we can stop
+            except Exception as parse_error:
+                logger.debug(f"      Failed to parse an attestation line: {parse_error}")
+                continue
+
+        if not found_sbom:
+            logger.warning(f"      No SBOM predicate found in attestations for {full_image}")
 
     except subprocess.CalledProcessError as e:
         # Log the stderr for better debugging
@@ -181,6 +198,13 @@ def get_image_details(repo, tag, cache=None):
     if cache and cache_key in cache:
         cached_item = cache[cache_key]
         if cached_item.get("digest") == digest:
+            # If it's a container image and missing SBOMs, we try extracting again
+            if "/containers/" in repo and "sboms" not in cached_item:
+                logger.info(f"    Cache hit for {full_image} but missing SBOM. Retrying extraction...")
+                image_data = cached_item.copy()
+                extract_sbom(full_image, image_data)
+                return image_data, None
+            
             logger.info(f"    Cache hit for {full_image} (digest: {digest})")
             return cached_item, None
         
