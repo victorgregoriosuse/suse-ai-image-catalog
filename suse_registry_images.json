@@ -1,0 +1,632 @@
+[
+  {
+    "repository": "ai/charts/litellm",
+    "tag": "0.1.836",
+    "image_name": "ai/charts/litellm:0.1.836",
+    "architecture": null,
+    "os": null,
+    "digest": "sha256:418f6bbff1cbea485aecb5feab3200aa60b66ccca477de679ce01d1b924f98d8",
+    "created": null,
+    "labels": {},
+    "entrypoint": null,
+    "cmd": null
+  },
+  {
+    "repository": "ai/charts/litellm",
+    "tag": "0.1.837",
+    "image_name": "ai/charts/litellm:0.1.837",
+    "architecture": null,
+    "os": null,
+    "digest": "sha256:98cf2d4e66551b65f7abbba3a48b3f424dc246c7fc9ae62754c27ee995be4fa7",
+    "created": null,
+    "labels": {},
+    "entrypoint": null,
+    "cmd": null
+  },
+  {
+    "repository": "ai/charts/qdrant",
+    "tag": "1.16.3",
+    "image_name": "ai/charts/qdrant:1.16.3",
+    "architecture": null,
+    "os": null,
+    "digest": "sha256:598f9aa30c3080462366927935ebbea1b5bfc6f4316ad4467198acfd7060c35f",
+    "created": null,
+    "labels": {},
+    "entrypoint": null,
+    "cmd": null
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "1.80.15-stable.1",
+    "image_name": "ai/containers/litellm:1.80.15-stable.1",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:c4f2e28ca6b4fa3cfe306266263d9d65c457977e0c198b88ff7e773207732459",
+    "created": "2026-01-17T19:40:18.700053355Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-14T21:26:37Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.80.15-stable",
+    "image_name": "ai/containers/litellm:v1.80.15-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:0b4ec3861e978b4aa254f4070f292cd345496a5fb59c72e1ee21cd6db94b670b",
+    "created": "2026-01-17T17:41:34.505637986Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-14T21:26:37Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.0-stable",
+    "image_name": "ai/containers/litellm:v1.81.0-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f4913297d1bb3dc373eb8911a5ac816b597be9b5e08a91636b6c2786dd572aa8",
+    "created": "2026-01-24T19:30:57.29353971Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-23T14:46:44Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.12-stable",
+    "image_name": "ai/containers/litellm:v1.81.12-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:e24022878ccc87f57d808ac9304f18b87b8359e6556746d81cc20a5dc85f423a",
+    "created": "2026-02-21T21:39:11.455403955Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-18T21:09:58Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.13",
+    "image_name": "ai/containers/litellm:v1.81.13",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:a876f3f22f9b6fd481c9091c44a8a893d81c172d66dc2749298dcd3dc4a3d6f0",
+    "created": "2026-02-17T02:08:11.179136793Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-13T14:04:42Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.3-stable",
+    "image_name": "ai/containers/litellm:v1.81.3-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:dff82ccc32fb648927c090607887401c7e8ec814fe7c951beb95fe51073ca02b",
+    "created": "2026-02-08T00:08:25.176328241Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-04T17:37:18Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.9-stable",
+    "image_name": "ai/containers/litellm:v1.81.9-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:262e53d7702ed82579717faff0b08f7c0b7e9973a6406cfcc0e4af7826327627",
+    "created": "2026-02-15T00:56:15.400807456Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-13T14:04:42Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "1.80.15-stable.1",
+    "image_name": "ai/containers/litellm-database:1.80.15-stable.1",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:c73076efec73779e941077fab0d45eaa7c28f7dd4de16f249cd190c239be879d",
+    "created": "2026-01-17T19:42:37.925125291Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-14T21:26:37Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.80.15-stable",
+    "image_name": "ai/containers/litellm-database:v1.80.15-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:8a83153b98ccf0cb0ced61c3582d6949734b6c2f67fec284448b4035dff08ee2",
+    "created": "2026-01-17T17:43:58.912582328Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-14T21:26:37Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.0-stable",
+    "image_name": "ai/containers/litellm-database:v1.81.0-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:e1c89ae70ff6970f489ab61d5218b3acd3b1bc05a0511af765914bde6f7b2209",
+    "created": "2026-01-24T19:34:02.976593311Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-01-23T14:46:44Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.12-stable",
+    "image_name": "ai/containers/litellm-database:v1.81.12-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:1e151b4d320df0b0f6555f13577d716213b4fd502a2b117ed15c6629dd8cf1dd",
+    "created": "2026-02-21T21:42:08.570447691Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-18T21:09:58Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.13",
+    "image_name": "ai/containers/litellm-database:v1.81.13",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:7b9cbd3905f0d335630c2605b784e64ff69b6b2a0d12b3fc68f53dcf21fb6a97",
+    "created": "2026-02-17T02:11:10.005289164Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-13T14:04:42Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.3-stable",
+    "image_name": "ai/containers/litellm-database:v1.81.3-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:a73ca282472592aede981dd0d81bcb8bb665938e7bf04d7c7a32c78ad0901cf9",
+    "created": "2026-02-08T00:11:15.64864831Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-04T17:37:18Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.9-stable",
+    "image_name": "ai/containers/litellm-database:v1.81.9-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:e70342a7e2354a5b3ee6294a98fc348cbd4b5f60508a4982db9127580eec878c",
+    "created": "2026-02-15T00:59:24.936724894Z",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-13T14:04:42Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.2",
+    "image_name": "ai/containers/qdrant:v1.16.2",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:dab6de32f7b2cc599985a7c764db3e8b062f70508fb85ca074aa856f829bf335",
+    "created": "2025-12-04T12:06:42.339848048Z",
+    "labels": {
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.2"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.2-gpu-amd",
+    "image_name": "ai/containers/qdrant:v1.16.2-gpu-amd",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:c24ee51d97bea1858851c7bdd3993f57dcb569ea16316fe550df4cd6dbdb3ff5",
+    "created": "2025-12-04T11:39:33.146211913Z",
+    "labels": {
+      "maintainer": "Qdrant Team <info@qdrant.tech>",
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.2"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.2-gpu-nvidia",
+    "image_name": "ai/containers/qdrant:v1.16.2-gpu-nvidia",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f62a111970e39426b994ff7955992deb4370a8fde1b3570f98d0fdc5ea404e78",
+    "created": "2025-12-04T11:24:46.754266303Z",
+    "labels": {
+      "maintainer": "Qdrant Team <info@qdrant.tech>",
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.2"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.2-unprivileged",
+    "image_name": "ai/containers/qdrant:v1.16.2-unprivileged",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f36caff47eaa318ab599ecd2d8e88bf08c05a8855f095914818685f4ad68857a",
+    "created": "2025-12-04T12:36:54.745382013Z",
+    "labels": {
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.2"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.3",
+    "image_name": "ai/containers/qdrant:v1.16.3",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:0425e3e03e7fd9b3dc95c4214546afe19de2eb2e28ca621441a56663ac6e1f46",
+    "created": "2025-12-19T15:02:14.002533214Z",
+    "labels": {
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.3"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.3-gpu-amd",
+    "image_name": "ai/containers/qdrant:v1.16.3-gpu-amd",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f9e8534e25eafbb319a75de7643775df8828c4de50644ecc3f6fb0e95e774012",
+    "created": "2025-12-19T17:26:17.537656919Z",
+    "labels": {
+      "maintainer": "Qdrant Team <info@qdrant.tech>",
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.3"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.3-gpu-nvidia",
+    "image_name": "ai/containers/qdrant:v1.16.3-gpu-nvidia",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f6938de63b2143c4bb3ddbe76a134caba8ab1a696062540e42dd44a3420e3f08",
+    "created": "2025-12-19T16:36:20.275199877Z",
+    "labels": {
+      "maintainer": "Qdrant Team <info@qdrant.tech>",
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.3"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.16.3-unprivileged",
+    "image_name": "ai/containers/qdrant:v1.16.3-unprivileged",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:9dfabc51ededc48158899a288a19a04de1ab54a11d8c512e1c40eebbd5e2bc92",
+    "created": "2025-12-19T15:36:01.083799525Z",
+    "labels": {
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.16.3"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.17.0",
+    "image_name": "ai/containers/qdrant:v1.17.0",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:f1c7272cdac52b38c1a0e89313922d940ba50afd90d593a1605dbbc214e66ffb",
+    "created": "2026-02-19T15:01:58.130337764Z",
+    "labels": {
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.17.0"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  },
+  {
+    "repository": "ai/containers/qdrant",
+    "tag": "v1.17.0-gpu-nvidia",
+    "image_name": "ai/containers/qdrant:v1.17.0-gpu-nvidia",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:5315819b0721f5211ccb432c6949e81c56bdcf63cab33b4dec45f42126970bde",
+    "created": "2026-02-19T13:56:39.074038495Z",
+    "labels": {
+      "maintainer": "Qdrant Team <info@qdrant.tech>",
+      "org.opencontainers.image.description": "Official Qdrant image",
+      "org.opencontainers.image.documentation": "https://qdrant.com/docs",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.source": "https://github.com/qdrant/qdrant",
+      "org.opencontainers.image.title": "Qdrant",
+      "org.opencontainers.image.url": "https://qdrant.com/",
+      "org.opencontainers.image.vendor": "Qdrant",
+      "org.opencontainers.image.version": "v1.17.0"
+    },
+    "entrypoint": null,
+    "cmd": [
+      "./entrypoint.sh"
+    ]
+  }
+]
