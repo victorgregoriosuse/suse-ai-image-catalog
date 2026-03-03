@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100">
+    <defs>
+        <!-- Use a filter to make the embedded image white (invert and brightness) -->
+        <filter id="white-filter">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" />
+        </filter>
+    </defs>
+    <!-- Unofficial Badge -->
+    <rect x="0" y="30" width="85" height="24" rx="4" fill="#ffc107" />
+    <text x="42.5" y="47" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c322c" text-anchor="middle">UNOFFICIAL</text>
+    
+    <!-- Original SUSE Logo - we'll wrap it in a g with the filter -->
+    <g filter="url(#white-filter)">
+        <image href="https://d12w0ryu9hjsx8.cloudfront.net/shared-header/1.9/assets/SUSE_Logo.svg" x="95" y="0" height="80" width="200" />
+    </g>
+</svg>

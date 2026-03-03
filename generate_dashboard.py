@@ -17,8 +17,8 @@ GITHUB_URL = "https://github.com/e-minguez/suse-ai-image-catalog"
 APPCO_URL = "https://apps.rancher.io/stacks/suse-ai"
 DOCS_URL = "https://documentation.suse.com/suse-ai"
 LANDING_URL = "https://www.suse.com/solutions/ai/"
-LOGO_URL = "https://d12w0ryu9hjsx8.cloudfront.net/shared-header/1.9/assets/SUSE_Logo.svg"
-FAVICON_URL = "https://www.suse.com/favicon.ico"
+LOGO_URL = "static/logo_unofficial.svg"
+FAVICON_URL = "static/favicon_unofficial.svg"
 
 def load_json(path):
     if os.path.exists(path):

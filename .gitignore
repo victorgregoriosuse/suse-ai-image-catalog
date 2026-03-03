@@ -42,3 +42,4 @@ sboms/
 
 # Local environment variables
 .env
+static/*_original.*
