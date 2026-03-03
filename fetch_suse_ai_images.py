@@ -1,6 +1,7 @@
 import requests
 import json
 import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -22,6 +23,26 @@ def fetch_json(endpoint):
         return None
 
 def main():
+    # Load existing data for caching
+    cache = {}
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r') as f:
+                old_data = json.load(f)
+                for item in old_data:
+                    # Create a unique key for the artifact
+                    key = (
+                        item.get("application"),
+                        item.get("component"),
+                        item.get("image_name"),
+                        item.get("version"),
+                        item.get("architecture")
+                    )
+                    cache[key] = item
+            logger.info(f"Loaded {len(cache)} items from cache.")
+        except Exception as e:
+            logger.warning(f"Could not load cache from {OUTPUT_FILE}: {e}")
+
     logger.info(f"Fetching stack details for: {STACK_SLUG}")
     stacks_data = fetch_json("/stacks")
     if not stacks_data:
@@ -33,6 +54,7 @@ def main():
         return
 
     results = []
+    changes = []
     applications = suse_ai_stack.get('dependencies', {}).get('applications', [])
     
     for app_info in applications:
@@ -65,17 +87,38 @@ def main():
                     for artifact in artifacts:
                         pkg_format = artifact.get('packaging_format')
                         if pkg_format in ['CONTAINER', 'HELM_CHART']:
+                            image_name = artifact.get('name')
+                            arch = artifact.get('architecture')
+                            digest = f"{artifact.get('digest', {}).get('hash_function')}:{artifact.get('digest', {}).get('value')}"
+                            
+                            # Check cache
+                            cache_key = (app_slug, comp_slug, image_name, version_num, arch)
+                            is_new = cache_key not in cache
+                            
+                            if not is_new:
+                                cached_item = cache[cache_key]
+                                if cached_item.get("digest") == digest:
+                                    # Use cached item but update logo just in case
+                                    cached_item["app_logo_url"] = app_logo_url
+                                    results.append(cached_item)
+                                    continue
+                                else:
+                                    changes.append(f"Updated AppCo artifact: {image_name} version {version_num} ({arch})")
+                            else:
+                                changes.append(f"New AppCo {pkg_format.lower().replace('_', ' ')}: {image_name} version {version_num} ({arch})")
+
+                            logger.info(f"    {'New' if is_new else 'Updated'} artifact: {image_name} version {version_num}")
                             image_data = {
                                 "application": app_slug,
                                 "app_logo_url": app_logo_url,
                                 "component": comp_slug,
-                                "image_name": artifact.get('name'),
+                                "image_name": image_name,
                                 "version": version_num,
                                 "packaging_format": pkg_format,
-                                "architecture": artifact.get('architecture'),
+                                "architecture": arch,
                                 "os_family": artifact.get('operating_system', {}).get('family'),
                                 "os_version": artifact.get('operating_system', {}).get('version'),
-                                "digest": f"{artifact.get('digest', {}).get('hash_function')}:{artifact.get('digest', {}).get('value')}",
+                                "digest": digest,
                                 "last_updated": artifact.get('registered_at'),
                                 "sboms": [r for r in artifact.get('resources', []) if r.get('type') == 'SBOM'],
                                 "labels": artifact.get('labels', {})
@@ -84,10 +127,29 @@ def main():
 
     logger.info(f"Found {len(results)} container/chart artifacts.")
     
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    logger.info(f"Results saved to {OUTPUT_FILE}")
+    # Check if data actually changed
+    data_changed = True
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r') as f:
+                if json.load(f) == results:
+                    data_changed = False
+        except:
+            pass
+
+    if data_changed:
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(results, f, indent=2)
+        logger.info(f"Results saved to {OUTPUT_FILE}")
+        
+        # Save changes for the changelog
+        if changes:
+            with open("ai_changes.json", "w") as f:
+                json.dump(changes, f, indent=2)
+        
+        print("CHANGE_DETECTED")
+    else:
+        logger.info("No changes detected in AI images.")
 
 if __name__ == "__main__":
     main()

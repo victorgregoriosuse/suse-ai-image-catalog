@@ -7,6 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 # File paths
 RANCHER_JSON = "suse_ai_images.json"
 REGISTRY_JSON = "suse_registry_images.json"
+CHANGELOG_JSON = "changelog.json"
 OUTPUT_HTML = "index.html"
 TEMPLATE_DIR = "templates"
 TEMPLATE_FILE = "dashboard.html.j2"
@@ -47,6 +48,11 @@ def to_json_encoded(obj):
 def generate_html():
     rancher_data = load_json(RANCHER_JSON)
     registry_data = load_json(REGISTRY_JSON)
+    changelog_data = load_json(CHANGELOG_JSON)
+
+    # Add anchor IDs to changelog entries
+    for entry in changelog_data:
+        entry["anchor_id"] = f"change-{slugify(entry.get('date', ''))}"
 
     merged_data = []
     for item in rancher_data:
@@ -193,6 +199,7 @@ def generate_html():
         "registry_count": len(registry_data),
         "generated_at": datetime.now().strftime('%Y-%m-%d %H:%M'),
         "groups": final_groups,
+        "changelog": changelog_data,
         "current_year": datetime.now().year
     }
 

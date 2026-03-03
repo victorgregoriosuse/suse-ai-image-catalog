@@ -1,0 +1,118 @@
+import subprocess
+import os
+import sys
+import json
+import logging
+from datetime import datetime
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
+
+CHANGELOG_FILE = "changelog.json"
+
+def run_script(script_name, env=None):
+    logger.info(f"Running {script_name}...")
+    try:
+        # Use sys.executable to ensure we use the same python interpreter
+        result = subprocess.run(
+            [sys.executable, script_name],
+            capture_output=True,
+            text=True,
+            env={**os.environ, **(env or {})}
+        )
+        # Log stderr anyway if there's any
+        if result.stderr:
+            logger.error(f"Error in {script_name}:\n{result.stderr}")
+        
+        # Log stdout to help debugging
+        logger.debug(f"Output from {script_name}:\n{result.stdout}")
+        
+        return "CHANGE_DETECTED" in result.stdout
+    except Exception as e:
+        logger.error(f"Failed to run {script_name}: {e}")
+        return False
+
+def update_changelog():
+    all_changes = []
+    
+    # Load AppCo changes
+    if os.path.exists("ai_changes.json"):
+        try:
+            with open("ai_changes.json", "r") as f:
+                all_changes.extend(json.load(f))
+            os.remove("ai_changes.json")
+        except Exception as e:
+            logger.error(f"Error reading ai_changes.json: {e}")
+    
+    # Load Registry changes
+    if os.path.exists("registry_changes.json"):
+        try:
+            with open("registry_changes.json", "r") as f:
+                all_changes.extend(json.load(f))
+            os.remove("registry_changes.json")
+        except Exception as e:
+            logger.error(f"Error reading registry_changes.json: {e}")
+    
+    if not all_changes:
+        return False
+        
+    # Load existing changelog
+    changelog = []
+    if os.path.exists(CHANGELOG_FILE):
+        try:
+            with open(CHANGELOG_FILE, "r") as f:
+                changelog = json.load(f)
+        except Exception as e:
+            logger.warning(f"Could not load existing changelog: {e}")
+            
+    # Add new entry
+    new_entry = {
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "changes": all_changes
+    }
+    
+    # Keep it at the top (newest first)
+    changelog.insert(0, new_entry)
+    
+    # Limit changelog size (last 20 entries)
+    changelog = changelog[:20]
+    
+    with open(CHANGELOG_FILE, "w") as f:
+        json.dump(changelog, f, indent=2)
+    
+    return True
+
+def main():
+    # Registry credentials from environment
+    registry_env = {
+        "REGISTRY_USER": os.getenv("REGISTRY_USER", ""),
+        "REGISTRY_PASSWORD": os.getenv("REGISTRY_PASSWORD", "")
+    }
+
+    # Step 1: Fetch AppCo Data
+    ai_changed = run_script("fetch_suse_ai_images.py")
+    
+    # Step 2: Fetch Registry Data
+    registry_changed = run_script("fetch_suse_registry_images.py", env=registry_env)
+
+    # Step 3: Update Changelog if anything changed
+    changelog_updated = update_changelog()
+
+    # Step 4: Check if dashboard needs rebuilding
+    # Also check if index.html exists, if not, we must build it
+    dashboard_exists = os.path.exists("index.html")
+    
+    if ai_changed or registry_changed or changelog_updated or not dashboard_exists:
+        logger.info("Changes detected, changelog updated, or dashboard missing. Rebuilding dashboard...")
+        try:
+            subprocess.run([sys.executable, "generate_dashboard.py"], check=True)
+            logger.info("Dashboard successfully rebuilt.")
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Failed to rebuild dashboard: {e}")
+            sys.exit(1)
+    else:
+        logger.info("No changes detected. Skipping dashboard rebuild.")
+
+if __name__ == "__main__":
+    main()

@@ -47,17 +47,24 @@ jobs:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Fetch AppCo Data
-        run: python fetch_suse_ai_images.py
+      - name: Cache Data and SBOMs
+        uses: actions/cache@v4
+        with:
+          path: |
+            suse_ai_images.json
+            suse_registry_images.json
+            changelog.json
+            sboms/
+            index.html
+          key: ${{ runner.os }}-data-cache-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-data-cache-
 
-      - name: Fetch SUSE Registry Data
-        run: python fetch_suse_registry_images.py
+      - name: Update Data and Generate Dashboard
+        run: python run_all.py
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-
-      - name: Generate Dashboard
-        run: python generate_dashboard.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

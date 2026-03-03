@@ -169,30 +169,38 @@ def get_tags(repo):
     tags = [line for line in output.splitlines() if not (line.endswith(".sig") or line.endswith(".att"))]
     return tags
 
-def get_image_details(repo, tag):
+def get_image_details(repo, tag, cache=None):
     full_image = f"{REGISTRY}/{repo}:{tag}"
-    logger.info(f"    Inspecting {full_image}")
     
     digest = run_command(["crane", "digest", full_image])
-    config_json = run_command(["crane", "config", full_image])
+    if not digest:
+        return None, None
+
+    # Check cache
+    cache_key = f"{repo}:{tag}"
+    change_msg = None
+    if cache and cache_key in cache:
+        cached_item = cache[cache_key]
+        if cached_item.get("digest") == digest:
+            logger.info(f"    Cache hit for {full_image} (digest: {digest})")
+            return cached_item, None
+        else:
+            change_msg = f"Updated Registry image: {repo}:{tag} ({digest})"
+    else:
+        change_msg = f"New Registry image: {repo}:{tag} ({digest})"
+
+    logger.info(f"    Inspecting {full_image} (Cache miss or digest changed)")
     
+    config_json = run_command(["crane", "config", full_image])
     if not config_json:
-        return None
+        return None, None
     
     try:
         config = json.loads(config_json)
     except json.JSONDecodeError:
         logger.error(f"Failed to decode config for {full_image}")
-        return None
+        return None, None
 
-    # Try to find SBOMs by looking for .att tags matching the digest
-    # In OCI registries, SBOMs are often stored as referrers or attachments
-    # We'll check if a .att tag exists for this digest
-    sbom_tag = digest.replace(":", "-") + ".att"
-    
-    # Check if this .att tag exists in the repo
-    # This might be slow if we do it for every image, but let's see
-    
     image_data = {
         "repository": repo,
         "tag": tag,
@@ -209,16 +217,26 @@ def get_image_details(repo, tag):
     # Extract embedded SBOMs for container images
     extract_sbom(full_image, image_data)
     
-    return image_data
+    return image_data, change_msg
 
 def main():
     # Create SBOMs directory if it doesn't exist
     if not os.path.exists(SBOM_DIR):
         os.makedirs(SBOM_DIR)
 
-    # Ensure the output file is always initialized as an empty list
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump([], f)
+    # Load existing data for caching
+    cache = {}
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r') as f:
+                old_data = json.load(f)
+                for item in old_data:
+                    # Using repo:tag as key
+                    key = f"{item.get('repository')}:{item.get('tag')}"
+                    cache[key] = item
+            logger.info(f"Loaded {len(cache)} items from cache.")
+        except Exception as e:
+            logger.warning(f"Could not load cache from {OUTPUT_FILE}: {e}")
 
     repos = get_repositories()
     if not repos:
@@ -228,6 +246,7 @@ def main():
     logger.info(f"Found {len(repos)} repositories in {NAMESPACE}")
     
     all_images = []
+    changes = []
     for repo in repos:
         tags = get_tags(repo)
         if not tags:
@@ -235,18 +254,40 @@ def main():
             continue
             
         for tag in tags:
-            details = get_image_details(repo, tag)
+            details, change_msg = get_image_details(repo, tag, cache)
             if details:
                 all_images.append(details)
+                if change_msg:
+                    changes.append(change_msg)
             else:
                 logger.warning(f"    Failed to get details for {repo}:{tag}")
                 
     logger.info(f"Found total of {len(all_images)} images.")
     
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(all_images, f, indent=2)
-    
-    logger.info(f"Results saved to {OUTPUT_FILE}")
+    # Check if data actually changed
+    data_changed = True
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, 'r') as f:
+                if json.load(f) == all_images:
+                    data_changed = False
+        except:
+            pass
+
+    if data_changed:
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(all_images, f, indent=2)
+        logger.info(f"Results saved to {OUTPUT_FILE}")
+        
+        # Save changes for the changelog
+        if changes:
+            with open("registry_changes.json", "w") as f:
+                json.dump(changes, f, indent=2)
+
+        # Signal change via exit code or print (we'll use print for now)
+        print("CHANGE_DETECTED")
+    else:
+        logger.info("No changes detected in registry images.")
 
 if __name__ == "__main__":
     main()

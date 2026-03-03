@@ -68,11 +68,14 @@
         .card {
             background-color: var(--card-bg);
             border-color: var(--table-border);
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
         .card-header {
             background-color: var(--suse-pine);
             color: white;
             font-weight: bold;
+            border-bottom: 1px solid var(--suse-jungle);
         }
         .table {
             color: var(--text-color);
@@ -183,6 +186,34 @@
             text-align: center;
         }
 
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--suse-jungle);
+            color: var(--suse-pine);
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            line-height: 26px;
+            text-align: center;
+        }
+        #backToTop:hover {
+            background-color: var(--suse-pine);
+            color: var(--suse-jungle);
+            transform: translateY(-5px);
+        }
+
         /* Targeted highlighting */
         :target {
             background-color: var(--table-hover) !important;
@@ -195,7 +226,7 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
-        .group-header:hover .anchor-link, .version-row:hover .anchor-link {
+        .group-header:hover .anchor-link, .version-row:hover .anchor-link, .changelog-row:hover .anchor-link {
             visibility: visible;
         }
         
@@ -267,6 +298,9 @@
                 <button type="button" class="btn btn-outline-secondary btn-sm" onclick="collapseAll()">
                     <i class="bi bi-dash-square me-1"></i> Collapse All
                 </button>
+                <a href="#changelog" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-clock-history me-1"></i> View Changelog
+                </a>
             </div>
         </div>
     </div>
@@ -376,6 +410,50 @@
             </div>
         </div>
     </div>
+
+    {% if changelog %}
+    <div class="mt-5 mb-4" id="changelog">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+                <div>
+                    <span class="me-2">Changelog</span>
+                </div>
+                <span class="badge bg-light text-dark" style="font-size: 0.7rem;">History</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 200px;">Date</th>
+                                <th>Description of Changes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in changelog %}
+                            <tr id="{{ entry.anchor_id }}" class="changelog-row">
+                                <td style="vertical-align: top;">
+                                    <strong>{{ entry.date }}</strong>
+                                    <i class="bi bi-link-45deg anchor-link" title="Copy link to this entry" onclick="copyAnchor(event, '{{ entry.anchor_id }}')"></i>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled mb-0 small">
+                                        {% for change in entry.changes %}
+                                        <li class="mb-1">
+                                            <i class="bi bi-dot me-1 text-success"></i>{{ change }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
@@ -392,6 +470,10 @@
         </div>
     </div>
 </div>
+
+<button id="backToTop" title="Go to top">
+    <i class="bi bi-arrow-up"></i>
+</button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -584,6 +666,19 @@
         });
         groups.forEach(g => { tbody.appendChild(g.header); if (g.content) tbody.appendChild(g.content); });
     }
+
+    // Back to Top button logic
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    };
+    backToTopBtn.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 </script>
 
 <footer class="mt-5 pb-4 text-center text-muted" style="font-size: 0.8rem;">
@@ -596,5 +691,6 @@
         </p>
     </div>
 </footer>
+
 </body>
 </html>
