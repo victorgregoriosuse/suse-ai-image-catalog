@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 BASE_URL = "https://api.apps.rancher.io/v1"
 SITE_URL = "https://apps.rancher.io"
 STACK_SLUG = "suse-ai"
-OUTPUT_FILE = "suse_ai_images.json"
+OUTPUT_FILE = "data/suse_ai_images.json"
 
 def fetch_json(endpoint):
     url = f"{BASE_URL}{endpoint}"
@@ -147,7 +147,7 @@ def main():
         
         # Save changes for the changelog
         if changes:
-            with open("ai_changes.json", "w") as f:
+            with open("data/ai_changes.json", "w") as f:
                 json.dump(changes, f, indent=2)
         
         print("CHANGE_DETECTED")

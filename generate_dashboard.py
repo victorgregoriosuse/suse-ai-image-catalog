@@ -5,9 +5,9 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
 # File paths
-RANCHER_JSON = "suse_ai_images.json"
-REGISTRY_JSON = "suse_registry_images.json"
-CHANGELOG_JSON = "changelog.json"
+RANCHER_JSON = "data/suse_ai_images.json"
+REGISTRY_JSON = "data/suse_registry_images.json"
+CHANGELOG_JSON = "data/changelog.json"
 OUTPUT_HTML = "index.html"
 TEMPLATE_DIR = "templates"
 TEMPLATE_FILE = "dashboard.html.j2"

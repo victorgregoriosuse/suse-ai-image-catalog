@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 REGISTRY = "registry.suse.com"
 NAMESPACE = "ai/"
-OUTPUT_FILE = "suse_registry_images.json"
+OUTPUT_FILE = "data/suse_registry_images.json"
 SBOM_DIR = "sboms"
 
 def cosign_is_installed():
@@ -297,7 +297,7 @@ def main():
         
         # Save changes for the changelog
         if changes:
-            with open("registry_changes.json", "w") as f:
+            with open("data/registry_changes.json", "w") as f:
                 json.dump(changes, f, indent=2)
 
         # Signal change via exit code or print (we'll use print for now)

@@ -30,33 +30,34 @@ def run_script(script_name, env=None):
         
         return "CHANGE_DETECTED" in result.stdout
     except Exception as e:
-        logger.error(f"Failed to run {script_name}: {e}")
-        return False
+        CHANGELOG_FILE = "data/changelog.json"
 
-def update_changelog():
-    all_changes = []
-    
-    # Load AppCo changes
-    if os.path.exists("ai_changes.json"):
-        try:
-            with open("ai_changes.json", "r") as f:
-                all_changes.extend(json.load(f))
-            os.remove("ai_changes.json")
-        except Exception as e:
-            logger.error(f"Error reading ai_changes.json: {e}")
-    
-    # Load Registry changes
-    if os.path.exists("registry_changes.json"):
-        try:
-            with open("registry_changes.json", "r") as f:
-                all_changes.extend(json.load(f))
-            os.remove("registry_changes.json")
-        except Exception as e:
-            logger.error(f"Error reading registry_changes.json: {e}")
-    
-    if not all_changes:
-        return False
-        
+        def run_script(script_name, env=None):
+        ...
+        def update_changelog():
+            all_changes = []
+
+            # Load AppCo changes
+            if os.path.exists("data/ai_changes.json"):
+                try:
+                    with open("data/ai_changes.json", "r") as f:
+                        all_changes.extend(json.load(f))
+                    os.remove("data/ai_changes.json")
+                except Exception as e:
+                    logger.error(f"Error reading data/ai_changes.json: {e}")
+
+            # Load Registry changes
+            if os.path.exists("data/registry_changes.json"):
+                try:
+                    with open("data/registry_changes.json", "r") as f:
+                        all_changes.extend(json.load(f))
+                    os.remove("data/registry_changes.json")
+                except Exception as e:
+                    logger.error(f"Error reading data/registry_changes.json: {e}")
+
+            if not all_changes:
+                return False
+
     # Load existing changelog
     changelog = []
     if os.path.exists(CHANGELOG_FILE):

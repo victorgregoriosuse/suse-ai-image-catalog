@@ -53,9 +53,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            suse_ai_images.json
-            suse_registry_images.json
-            changelog.json
+            data/
             sboms/
             index.html
           key: ${{ runner.os }}-data-cache-
@@ -75,20 +73,19 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update changelog [skip ci]"
-          file_pattern: 'changelog.json'
+          file_pattern: 'data/changelog.json'
           branch: main
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
 
       - name: Save Data Cache
         if: steps.update.outputs.data_changed == 'true'
         uses: actions/cache/save@v4
         with:
           path: |
-            suse_ai_images.json
-            suse_registry_images.json
-            changelog.json
+            data/
             sboms/
             index.html
-          key: ${{ runner.os }}-data-cache-${{ hashFiles('suse_ai_images.json', 'suse_registry_images.json', 'changelog.json') }}
+          key: ${{ runner.os }}-data-cache-${{ hashFiles('data/*.json') }}
 
       - name: Setup Pages
         if: steps.update.outputs.data_changed == 'true'
