@@ -108,11 +108,20 @@ def main():
         try:
             subprocess.run([sys.executable, "generate_dashboard.py"], check=True)
             logger.info("Dashboard successfully rebuilt.")
+            
+            # Set GitHub Action output if running in GHA
+            if os.getenv('GITHUB_OUTPUT'):
+                with open(os.getenv('GITHUB_OUTPUT'), 'a') as f:
+                    f.write("data_changed=true\n")
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to rebuild dashboard: {e}")
             sys.exit(1)
     else:
         logger.info("No changes detected. Skipping dashboard rebuild.")
+        # Set GitHub Action output if running in GHA
+        if os.getenv('GITHUB_OUTPUT'):
+            with open(os.getenv('GITHUB_OUTPUT'), 'a') as f:
+                f.write("data_changed=false\n")
 
 if __name__ == "__main__":
     main()

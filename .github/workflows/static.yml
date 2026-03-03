@@ -61,12 +61,14 @@ jobs:
             ${{ runner.os }}-data-cache-
 
       - name: Update Data and Generate Dashboard
+        id: update
         run: python run_all.py
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Commit changes to changelog
+        if: steps.update.outputs.data_changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update changelog [skip ci]"
@@ -74,6 +76,7 @@ jobs:
           branch: main
 
       - name: Save Data Cache
+        if: steps.update.outputs.data_changed == 'true'
         uses: actions/cache/save@v4
         with:
           path: |
