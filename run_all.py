@@ -102,9 +102,10 @@ def main():
     # Step 4: Check if dashboard needs rebuilding
     # Also check if index.html exists, if not, we must build it
     dashboard_exists = os.path.exists("index.html")
+    force_rebuild = os.getenv("FORCE_REBUILD", "false").lower() == "true"
     
-    if ai_changed or registry_changed or changelog_updated or not dashboard_exists:
-        logger.info("Changes detected, changelog updated, or dashboard missing. Rebuilding dashboard...")
+    if ai_changed or registry_changed or changelog_updated or not dashboard_exists or force_rebuild:
+        logger.info("Changes detected, changelog updated, dashboard missing, or force rebuild requested. Rebuilding dashboard...")
         try:
             subprocess.run([sys.executable, "generate_dashboard.py"], check=True)
             logger.info("Dashboard successfully rebuilt.")
