@@ -132,8 +132,7 @@ KNOWN_REPOS = [
     "ai/charts/qdrant",
     "ai/containers/litellm",
     "ai/containers/litellm-database",
-    "ai/containers/qdrant",
-    "ai/hello-world"
+    "ai/containers/qdrant"
 ]
 
 def get_repositories():
