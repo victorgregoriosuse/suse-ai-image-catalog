@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -65,6 +65,13 @@ jobs:
         env:
           REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Commit changes to changelog
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update changelog [skip ci]"
+          file_pattern: 'changelog.json'
+          branch: main
 
       - name: Save Data Cache
         uses: actions/cache/save@v4
