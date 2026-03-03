@@ -9,7 +9,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-CHANGELOG_FILE = "changelog.json"
+CHANGELOG_FILE = "data/changelog.json"
 
 def run_script(script_name, env=None):
     logger.info(f"Running {script_name}...")
@@ -30,34 +30,33 @@ def run_script(script_name, env=None):
         
         return "CHANGE_DETECTED" in result.stdout
     except Exception as e:
-        CHANGELOG_FILE = "data/changelog.json"
+        logger.error(f"Failed to run {script_name}: {e}")
+        return False
 
-        def run_script(script_name, env=None):
-        ...
-        def update_changelog():
-            all_changes = []
-
-            # Load AppCo changes
-            if os.path.exists("data/ai_changes.json"):
-                try:
-                    with open("data/ai_changes.json", "r") as f:
-                        all_changes.extend(json.load(f))
-                    os.remove("data/ai_changes.json")
-                except Exception as e:
-                    logger.error(f"Error reading data/ai_changes.json: {e}")
-
-            # Load Registry changes
-            if os.path.exists("data/registry_changes.json"):
-                try:
-                    with open("data/registry_changes.json", "r") as f:
-                        all_changes.extend(json.load(f))
-                    os.remove("data/registry_changes.json")
-                except Exception as e:
-                    logger.error(f"Error reading data/registry_changes.json: {e}")
-
-            if not all_changes:
-                return False
-
+def update_changelog():
+    all_changes = []
+    
+    # Load AppCo changes
+    if os.path.exists("data/ai_changes.json"):
+        try:
+            with open("data/ai_changes.json", "r") as f:
+                all_changes.extend(json.load(f))
+            os.remove("data/ai_changes.json")
+        except Exception as e:
+            logger.error(f"Error reading data/ai_changes.json: {e}")
+    
+    # Load Registry changes
+    if os.path.exists("data/registry_changes.json"):
+        try:
+            with open("data/registry_changes.json", "r") as f:
+                all_changes.extend(json.load(f))
+            os.remove("data/registry_changes.json")
+        except Exception as e:
+            logger.error(f"Error reading data/registry_changes.json: {e}")
+    
+    if not all_changes:
+        return False
+        
     # Load existing changelog
     changelog = []
     if os.path.exists(CHANGELOG_FILE):
