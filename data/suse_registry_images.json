@@ -59,6 +59,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-1.80.15-stable.1-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -85,6 +91,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.80.15-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -111,6 +123,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.0-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -137,6 +155,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.12-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -163,6 +187,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.13-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -189,6 +219,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.3-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -215,6 +251,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.9-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -241,6 +283,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-1.80.15-stable.1-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -267,6 +315,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.80.15-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -293,6 +347,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.0-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -319,6 +379,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.12-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -345,6 +411,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.13-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -371,6 +443,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.3-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -397,6 +475,12 @@
     "cmd": [
       "--port",
       "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.9-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -419,6 +503,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.2-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -443,6 +533,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.2-gpu-amd-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -467,6 +563,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.2-gpu-nvidia-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -489,6 +591,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.2-unprivileged-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -511,6 +619,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.3-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -535,6 +649,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.3-gpu-amd-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -559,6 +679,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.3-gpu-nvidia-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -581,6 +707,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.16.3-unprivileged-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -603,6 +735,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.17.0-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   },
   {
@@ -627,6 +765,12 @@
     "entrypoint": null,
     "cmd": [
       "./entrypoint.sh"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-qdrant-v1.17.0-gpu-nvidia-cyclonedx.json",
+        "format": "CycloneDX"
+      }
     ]
   }
 ]
