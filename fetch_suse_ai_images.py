@@ -30,15 +30,11 @@ def main():
             with open(OUTPUT_FILE, 'r') as f:
                 old_data = json.load(f)
                 for item in old_data:
-                    # Split image_name to get the base name (without version)
-                    full_image_name = item.get("image_name", "")
-                    image_base = full_image_name.split(':')[0] if ':' in full_image_name else full_image_name
-                    
-                    # Create a unique key for the artifact (ignoring the specific version/tag)
+                    # Create a unique key for the artifact using the full image_name
                     key = (
                         item.get("application"),
                         item.get("component"),
-                        image_base,
+                        item.get("image_name"),
                         item.get("architecture")
                     )
                     cache[key] = item
@@ -94,9 +90,8 @@ def main():
                             arch = artifact.get('architecture')
                             digest = f"{artifact.get('digest', {}).get('hash_function')}:{artifact.get('digest', {}).get('value')}"
                             
-                            # Check cache (ignore tag/version in key to detect updates)
-                            image_base = image_name.split(':')[0] if ':' in image_name else image_name
-                            cache_key = (app_slug, comp_slug, image_base, arch)
+                            # Check cache
+                            cache_key = (app_slug, comp_slug, image_name, arch)
                             is_new = cache_key not in cache
                             
                             artifact_type = "Chart" if pkg_format == "HELM_CHART" else "Container"

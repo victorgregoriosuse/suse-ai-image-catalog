@@ -193,14 +193,12 @@ def get_image_details(repo, tag, cache=None):
         return None, None
 
     # Check cache
-    # Use repo as base key to detect updates (tag is part of the artifact identification but we want to detect changes in the same repo/tag if digest changes OR if tag is just a newer version of the same component)
-    # Actually, registry images are usually repo:tag. If tag changes, it's a "new" version but the SAME component.
-    # To be consistent with AppCo, let's use the repo as the key to detect if we've seen this component before.
-    cache_key = repo
+    # Use (repo, tag) as the unique key for the artifact
+    cache_key = (repo, tag)
     change_msg = None
     if cache and cache_key in cache:
         cached_item = cache[cache_key]
-        if cached_item.get("digest") == digest and cached_item.get("tag") == tag:
+        if cached_item.get("digest") == digest:
             # If it's a container image and missing SBOMs, we try extracting again
             if "/containers/" in repo and "sboms" not in cached_item:
                 logger.info(f"    Cache hit for {full_image} but missing SBOM. Retrying extraction...")
@@ -273,9 +271,8 @@ def main():
             with open(OUTPUT_FILE, 'r') as f:
                 old_data = json.load(f)
                 for item in old_data:
-                    # Using repo as key to detect updates to the same component
-                    key = item.get('repository')
-                    # We keep the latest one we find (usually the file is sorted or we'll get the last one)
+                    # Using repo:tag as key to uniquely identify the artifact
+                    key = (item.get('repository'), item.get('tag'))
                     cache[key] = item
             logger.info(f"Loaded {len(cache)} items from cache.")
         except Exception as e:
