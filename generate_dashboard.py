@@ -19,12 +19,36 @@ DOCS_URL = "https://documentation.suse.com/suse-ai"
 LANDING_URL = "https://www.suse.com/solutions/ai/"
 LOGO_URL = "static/logo_unofficial.svg"
 FAVICON_URL = "static/favicon_unofficial.svg"
+REGISTRY_LOGO_PLACEHOLDER = "static/placeholder-logo.svg"
 
 def load_json(path):
     if os.path.exists(path):
         with open(path, 'r') as f:
             return json.load(f)
     return []
+
+def get_registry_logo(item):
+    """Resolve a logo for a registry image.
+    1. If org.opencontainers.image.source is a GitHub URL and the OCI title/vendor
+       relates to the actual project (not a base image), use the org's avatar.
+    2. Otherwise return a local placeholder icon.
+    """
+    labels = item.get('labels') or {}
+    source = labels.get('org.opencontainers.image.source', '')
+    title = labels.get('org.opencontainers.image.title', '').lower()
+    vendor = labels.get('org.opencontainers.image.vendor', '').lower()
+
+    if 'github.com' in source:
+        # Derive the project name from the image path (last segment, no tag)
+        image_name = item.get('image_name', '')
+        project = image_name.split('/')[-1].split(':')[0].lower()
+        # Only use the GitHub logo if title or vendor actually mentions the project
+        if project and (project in title or project in vendor):
+            path = source.replace('https://github.com/', '').replace('http://github.com/', '')
+            org = path.split('/')[0]
+            if org:
+                return f"https://github.com/{org}.png"
+    return REGISTRY_LOGO_PLACEHOLDER
 
 def slugify(text):
     if not text: return ""
@@ -140,7 +164,7 @@ def generate_html():
             "digest": item.get("digest"),
             "details": item,
             "type": "Chart" if is_chart else "Container",
-            "logo": None,
+            "logo": get_registry_logo(item),
             "sboms": processed_sboms,
             "anchor_id": anchor_id
         })
