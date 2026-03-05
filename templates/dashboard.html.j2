@@ -237,6 +237,15 @@
         }
 
         @media (max-width: 768px) {
+            /* Revert fixed layout on mobile so columns can reflow naturally */
+            #imageTable .collapse table {
+                table-layout: auto !important;
+            }
+            #imageTable .collapse td {
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+            }
             .summary-card h3 { font-size: 1.2rem; margin-bottom: 0; }
             .summary-card p { font-size: 0.7rem; }
             .summary-card .p-2 { padding: 0.5rem !important; }
