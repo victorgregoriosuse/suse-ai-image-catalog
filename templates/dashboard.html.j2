@@ -229,6 +229,13 @@
             visibility: visible;
         }
         
+        /* Fixed-layout inner table: prevent overflow from breaking column widths */
+        #imageTable .collapse td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         @media (max-width: 768px) {
             .summary-card h3 { font-size: 1.2rem; margin-bottom: 0; }
             .summary-card p { font-size: 0.7rem; }
@@ -367,7 +374,15 @@
                         </tr>
                         <tr id="{{ gid }}" class="collapse">
                             <td colspan="8" class="p-0">
-                                <table class="table table-sm mb-0">
+                                <table class="table table-sm mb-0" style="table-layout: fixed; width: 100%;">
+                                    <colgroup>
+                                        <col style="width: 35%;">
+                                        <col style="width: 12%;">
+                                        <col style="width: 15%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 14%;">
+                                        <col style="width: 14%;">
+                                    </colgroup>
                                     <thead class="table-light">
                                         <tr>
                                             <th class="ps-5">Version <small class="text-muted fw-normal ms-2">(Click for details)</small></th>
