@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-03-07 05:04",
+    "changes": [
+      "New Container (AppCo): mlflow:3.10.0-7.3 (aarch64)",
+      "New Container (AppCo): mlflow:3.10.0-7.3 (x86_64)",
+      "New Container (AppCo): mlflow:2.22.4-10.3 (aarch64)",
+      "New Container (AppCo): mlflow:2.22.4-10.3 (x86_64)"
+    ]
+  },
+  {
     "date": "2026-03-06 20:41",
     "changes": [
       "New Chart (AppCo): ollama:1.33.2-11.3 (N/A)",
