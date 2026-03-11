@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-03-11 20:45",
+    "changes": [
+      "New Container (AppCo): milvus:2.6.12-4.3 (aarch64)",
+      "New Container (AppCo): milvus:2.6.12-4.3 (x86_64)"
+    ]
+  },
+  {
     "date": "2026-03-10 17:02",
     "changes": [
       "New Container (AppCo): mlflow:3.10.1-8.3 (aarch64)",

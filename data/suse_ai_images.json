@@ -3,6 +3,80 @@
     "application": "milvus",
     "app_logo_url": "https://apps.rancher.io/logos/milvus.png",
     "component": "milvus",
+    "image_name": "milvus:2.6.12-4.3",
+    "version": "2.6.12",
+    "packaging_format": "CONTAINER",
+    "architecture": "aarch64",
+    "os_family": "SLE",
+    "os_version": "15.7",
+    "digest": "SHA256:42f714de219bdaa5444d216d3ded0e4951d88e94661c9c5a10d7765d6dbfa7dd",
+    "last_updated": "2026-03-11T17:48:12.206968Z",
+    "sboms": [
+      {
+        "type": "SBOM",
+        "format": "CYCLONEDX",
+        "filename": "milvus-2.6.12-4.3.aarch64.cdx.json"
+      },
+      {
+        "type": "SBOM",
+        "format": "SPDX",
+        "filename": "milvus-2.6.12-4.3.aarch64.spdx.json"
+      }
+    ],
+    "labels": {
+      "com.suse.apps.main-package": "milvus-2.6",
+      "org.opencontainers.image.base.digest": "sha256:6a6500e55e862a50b429651cff445ad8fcb81ccae43b2a8fdaede123f824daf2",
+      "org.opencontainers.image.base.name": "registry.suse.com/bci/bci-micro:15.7-55.8",
+      "org.opencontainers.image.created": "2026-03-11T11:53:17.523564120Z",
+      "org.opencontainers.image.description": "Milvus is a high-performance vector database built for scale. It is used by AI applications to organize and search through large amount of unstructured data, such as text, images, and multi-modal information.",
+      "org.opencontainers.image.ref.name": "2.6.12-4.3",
+      "org.opencontainers.image.title": "Milvus",
+      "org.opencontainers.image.url": "https://apps.rancher.io/applications/milvus",
+      "org.opencontainers.image.vendor": "SUSE LLC",
+      "org.opencontainers.image.version": "2.6.12"
+    }
+  },
+  {
+    "application": "milvus",
+    "app_logo_url": "https://apps.rancher.io/logos/milvus.png",
+    "component": "milvus",
+    "image_name": "milvus:2.6.12-4.3",
+    "version": "2.6.12",
+    "packaging_format": "CONTAINER",
+    "architecture": "x86_64",
+    "os_family": "SLE",
+    "os_version": "15.7",
+    "digest": "SHA256:1f14a06f67539e967d0b765adcf8e1c0ff9c4c1d982af6e358d9799b295e4179",
+    "last_updated": "2026-03-11T17:48:12.409729Z",
+    "sboms": [
+      {
+        "type": "SBOM",
+        "format": "SPDX",
+        "filename": "milvus-2.6.12-4.3.x86_64.spdx.json"
+      },
+      {
+        "type": "SBOM",
+        "format": "CYCLONEDX",
+        "filename": "milvus-2.6.12-4.3.x86_64.cdx.json"
+      }
+    ],
+    "labels": {
+      "com.suse.apps.main-package": "milvus-2.6",
+      "org.opencontainers.image.base.digest": "sha256:1a6e0eea6b390e988c75daedc0a54a77767a523e2d624e6e6c24447041c1bbb3",
+      "org.opencontainers.image.base.name": "registry.suse.com/bci/bci-micro:15.7-55.8",
+      "org.opencontainers.image.created": "2026-03-11T11:32:36.853448160Z",
+      "org.opencontainers.image.description": "Milvus is a high-performance vector database built for scale. It is used by AI applications to organize and search through large amount of unstructured data, such as text, images, and multi-modal information.",
+      "org.opencontainers.image.ref.name": "2.6.12-4.3",
+      "org.opencontainers.image.title": "Milvus",
+      "org.opencontainers.image.url": "https://apps.rancher.io/applications/milvus",
+      "org.opencontainers.image.vendor": "SUSE LLC",
+      "org.opencontainers.image.version": "2.6.12"
+    }
+  },
+  {
+    "application": "milvus",
+    "app_logo_url": "https://apps.rancher.io/logos/milvus.png",
+    "component": "milvus",
     "image_name": "milvus:2.6.11-4.2",
     "version": "2.6.11",
     "packaging_format": "CONTAINER",
