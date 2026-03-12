@@ -4,15 +4,16 @@ A specialized Python toolset designed to aggregate, process, and visualize conta
 
 ## Project Overview
 
-This project consists of three main components:
+This project consists of four main components:
 1.  **Rancher API Scraper**: Queries `api.apps.rancher.io` to find all applications, components, and Helm charts within the `suse-ai` stack.
 2.  **Registry Inspector**: Uses the `crane` utility to list and inspect OCI images within the `registry.suse.com/ai/` namespace and `cosign` to extract embedded CycloneDX SBOMs.
-3.  **Dashboard Generator**: Merges data, groups versions, and creates a responsive HTML dashboard with an automated changelog and deep-linking support.
+3.  **Vulnerability Processor**: Uses `trivy` to scan extracted SBOMs and annotate `data/suse_registry_images.json` with per-image vulnerability summaries.
+4.  **Dashboard Generator**: Merges data, groups versions, and creates a responsive HTML dashboard with an automated changelog and deep-linking support.
 
 ### Tech Stack
 - **Language**: Python 3
 - **Libraries**: `requests` (API), `Jinja2` (Templating)
-- **External Tools**: `crane` (OCI), `cosign` (SBOM)
+- **External Tools**: `crane` (OCI), `cosign` (SBOM), `trivy` (vulnerability scanning)
 - **Frontend**: Bootstrap 5, Bootstrap Icons, Vanilla JS
 
 ## Key Files
@@ -20,9 +21,11 @@ This project consists of three main components:
 - `data/`: **CRITICAL**. Contains baseline JSON data and the persistent `changelog.json`. These files are tracked in Git to ensure consistent change detection.
 - `run_all.py`: Orchestrates the entire update workflow, including change detection and conditional generation.
 - `fetch_suse_ai_images.py`: Fetches AppCo metadata and detects changes.
-- `fetch_suse_registry_images.py`: Lists/inspects Registry images and extracts SBOMs.
+- `fetch_suse_registry_images.py`: Lists/inspects Registry images and extracts SBOMs into `sboms/`.
+- `process_vulnerabilities.py`: Scans SBOMs with Trivy and adds vulnerability summaries to `data/suse_registry_images.json`. Stores raw results in `vulns/`.
 - `generate_dashboard.py`: Logic for data merging and Jinja2 rendering.
 - `templates/dashboard.html.j2`: Main dashboard template.
+- `static/`: Static assets (logos, favicons) served with the dashboard.
 - `.github/workflows/static.yml`: Automated deployment workflow with bot-powered changelog commits.
 
 ## Development Conventions
@@ -33,5 +36,6 @@ This project consists of three main components:
 - **Indentation & Structure**: Maintain strict Python indentation and follow the existing orchestration pattern in `run_all.py`.
 - **Deep-Linking**: **CRITICAL**. Support direct anchors for image groups, versions, and changelog entries. Use `history.replaceState` to update the URL dynamically.
 - **UI Consistency**: Ensure all tables (images and changelog) share identical styling, including padding, headers, and corner rounding.
-- **Deployment Efficiency**: Only redeploy the dashboard and save new caches if `data_changed=true` is reported by the orchestration script.
+- **Deployment Efficiency**: Only redeploy the dashboard and save new caches (`sboms/`, `vulns/`, `index.html`) if `data_changed=true` is reported by the orchestration script.
+- **Cache Strategy**: GitHub Actions caches `sboms/` and `vulns/` between runs keyed by `data/*.json` hashes to avoid redundant SBOM extraction and Trivy scans.
 - **Push Policy**: **CRITICAL**. NEVER push changes to GitHub directly. Always ask for explicit user confirmation before any `git push` operation.
