@@ -81,7 +81,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:07.961140Z",
+      "scan_date": "2026-03-13T13:18:02.845023Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -122,7 +122,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.069423Z",
+      "scan_date": "2026-03-13T13:18:02.940359Z",
       "total": 61,
       "critical": 1,
       "high": 34,
@@ -163,7 +163,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.179461Z",
+      "scan_date": "2026-03-13T13:18:03.039300Z",
       "total": 90,
       "critical": 3,
       "high": 37,
@@ -204,7 +204,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.298563Z",
+      "scan_date": "2026-03-13T13:18:03.153131Z",
       "total": 39,
       "critical": 0,
       "high": 29,
@@ -245,7 +245,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.415738Z",
+      "scan_date": "2026-03-13T13:18:03.266251Z",
       "total": 51,
       "critical": 0,
       "high": 36,
@@ -286,7 +286,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.516606Z",
+      "scan_date": "2026-03-13T13:18:03.360035Z",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -327,7 +327,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.627434Z",
+      "scan_date": "2026-03-13T13:18:03.466803Z",
       "total": 49,
       "critical": 0,
       "high": 33,
@@ -368,7 +368,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.734766Z",
+      "scan_date": "2026-03-13T13:18:03.566311Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -409,7 +409,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.846485Z",
+      "scan_date": "2026-03-13T13:18:03.664623Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -450,7 +450,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:08.951961Z",
+      "scan_date": "2026-03-13T13:18:03.768663Z",
       "total": 90,
       "critical": 3,
       "high": 37,
@@ -491,7 +491,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.071449Z",
+      "scan_date": "2026-03-13T13:18:03.882769Z",
       "total": 39,
       "critical": 0,
       "high": 29,
@@ -532,7 +532,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.198780Z",
+      "scan_date": "2026-03-13T13:18:04.006859Z",
       "total": 51,
       "critical": 0,
       "high": 36,
@@ -573,7 +573,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.300722Z",
+      "scan_date": "2026-03-13T13:18:04.105820Z",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -614,7 +614,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.413961Z",
+      "scan_date": "2026-03-13T13:18:04.213893Z",
       "total": 49,
       "critical": 0,
       "high": 33,
@@ -651,7 +651,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.587290Z",
+      "scan_date": "2026-03-13T13:18:04.385743Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -690,7 +690,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:09.967236Z",
+      "scan_date": "2026-03-13T13:18:04.755496Z",
       "total": 1928,
       "critical": 0,
       "high": 33,
@@ -729,7 +729,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:10.171421Z",
+      "scan_date": "2026-03-13T13:18:04.955726Z",
       "total": 339,
       "critical": 0,
       "high": 18,
@@ -766,7 +766,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:10.348130Z",
+      "scan_date": "2026-03-13T13:18:05.131916Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -803,7 +803,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:10.520185Z",
+      "scan_date": "2026-03-13T13:18:05.308598Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -842,7 +842,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:10.889508Z",
+      "scan_date": "2026-03-13T13:18:05.663523Z",
       "total": 1928,
       "critical": 0,
       "high": 33,
@@ -881,7 +881,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:11.083118Z",
+      "scan_date": "2026-03-13T13:18:05.852854Z",
       "total": 339,
       "critical": 0,
       "high": 18,
@@ -918,7 +918,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:11.254238Z",
+      "scan_date": "2026-03-13T13:18:06.022599Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -955,7 +955,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:11.422993Z",
+      "scan_date": "2026-03-13T13:18:06.195372Z",
       "total": 89,
       "critical": 0,
       "high": 11,
@@ -994,7 +994,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:02:11.611440Z",
+      "scan_date": "2026-03-13T13:18:06.380729Z",
       "total": 278,
       "critical": 0,
       "high": 12,
