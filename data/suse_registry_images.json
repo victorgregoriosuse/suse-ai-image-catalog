@@ -21,7 +21,7 @@
       "high": 43,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "source": "aggregated",
       "component_count": 1
     }
@@ -48,7 +48,7 @@
       "high": 43,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "source": "aggregated",
       "component_count": 1
     }
@@ -69,12 +69,12 @@
       "bci/bci-base:latest"
     ],
     "vulnerabilities": {
-      "total": 142,
+      "total": 148,
       "critical": 3,
-      "high": 23,
+      "high": 26,
       "medium": 44,
       "low": 71,
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "source": "aggregated",
       "component_count": 1
     }
@@ -111,13 +111,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 101,
       "critical": 3,
       "high": 43,
       "medium": 54,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-1.80.15-stable.1-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "1.82.1",
+    "image_name": "ai/containers/litellm:1.82.1",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:57ec762d9c60d829a6d8797b3a7e2c8ecb31d64018aec07dce04861cdd4db638",
+    "created": "2026-03-06 00:49",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-03-04T14:06:50Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-1.82.1-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 12,
+      "critical": 0,
+      "high": 9,
+      "medium": 3,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-1.82.1-vulns.json"
     }
   },
   {
@@ -152,7 +193,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 61,
       "critical": 1,
       "high": 34,
@@ -193,54 +234,13 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 90,
       "critical": 3,
       "high": 37,
       "medium": 49,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-v1.81.0-stable-vulns.json"
-    }
-  },
-  {
-    "repository": "ai/containers/litellm",
-    "tag": "v1.81.12-stable",
-    "image_name": "ai/containers/litellm:v1.81.12-stable",
-    "architecture": "amd64",
-    "os": "linux",
-    "digest": "sha256:e24022878ccc87f57d808ac9304f18b87b8359e6556746d81cc20a5dc85f423a",
-    "created": "2026-02-21 21:39",
-    "labels": {
-      "dev.chainguard.image.title": "wolfi-base",
-      "dev.chainguard.package.main": "",
-      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
-      "org.opencontainers.image.created": "2026-02-18T21:09:58Z",
-      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
-      "org.opencontainers.image.title": "wolfi-base",
-      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
-      "org.opencontainers.image.vendor": "Chainguard"
-    },
-    "entrypoint": [
-      "docker/prod_entrypoint.sh"
-    ],
-    "cmd": [
-      "--port",
-      "4000"
-    ],
-    "sboms": [
-      {
-        "path": "sboms/ai-containers-litellm-v1.81.12-stable-cyclonedx.json",
-        "format": "CycloneDX"
-      }
-    ],
-    "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 39,
-      "critical": 0,
-      "high": 29,
-      "medium": 8,
-      "low": 2,
-      "details_path": "vulns/ai-containers-litellm-v1.81.12-stable-vulns.json"
     }
   },
   {
@@ -275,13 +275,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 51,
       "critical": 0,
       "high": 36,
       "medium": 13,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-v1.81.13-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.81.15",
+    "image_name": "ai/containers/litellm:v1.81.15",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:303c31af87e7915e7b34d6c4d55a6ac753ef947a5deaa899e9ccfd3d1d58f7c2",
+    "created": "2026-02-26 12:40",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-18T21:09:58Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.81.15-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 24,
+      "critical": 0,
+      "high": 17,
+      "medium": 7,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-v1.81.15-vulns.json"
     }
   },
   {
@@ -316,7 +357,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -357,13 +398,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 49,
       "critical": 0,
       "high": 33,
       "medium": 14,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-v1.81.9-stable-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm",
+    "tag": "v1.82.0-stable",
+    "image_name": "ai/containers/litellm:v1.82.0-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:71bf7283767ca436edcfa9f1f26c1743487b5fa29736c61c3eb6977776007c42",
+    "created": "2026-03-11 20:23",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-03-11T01:14:48Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-v1.82.0-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 8,
+      "critical": 0,
+      "high": 8,
+      "medium": 0,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-v1.82.0-stable-vulns.json"
     }
   },
   {
@@ -398,13 +480,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 101,
       "critical": 3,
       "high": 43,
       "medium": 54,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-database-1.80.15-stable.1-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "1.82.1",
+    "image_name": "ai/containers/litellm-database:1.82.1",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:bb477d47d4ad869bc3569ef7972cb54bcbfc27300f04caa6eb4143334667e388",
+    "created": "2026-03-06 00:52",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-03-04T14:06:50Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-1.82.1-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 20,
+      "critical": 0,
+      "high": 17,
+      "medium": 3,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-database-1.82.1-vulns.json"
     }
   },
   {
@@ -439,7 +562,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -480,7 +603,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 90,
       "critical": 3,
       "high": 37,
@@ -521,7 +644,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 39,
       "critical": 0,
       "high": 29,
@@ -562,13 +685,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 51,
       "critical": 0,
       "high": 36,
       "medium": 13,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.13-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.81.15",
+    "image_name": "ai/containers/litellm-database:v1.81.15",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:aa8431a302e9f73bbe99766aab6ad8be7378c14beb01df32deedf1cd74dc5d0d",
+    "created": "2026-02-26 12:43",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-02-18T21:09:58Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.81.15-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 24,
+      "critical": 0,
+      "high": 17,
+      "medium": 7,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-database-v1.81.15-vulns.json"
     }
   },
   {
@@ -603,7 +767,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -644,13 +808,54 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
+      "scan_date": "2026-03-13 20:47",
       "total": 49,
       "critical": 0,
       "high": 33,
       "medium": 14,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.9-stable-vulns.json"
+    }
+  },
+  {
+    "repository": "ai/containers/litellm-database",
+    "tag": "v1.82.0-stable",
+    "image_name": "ai/containers/litellm-database:v1.82.0-stable",
+    "architecture": "amd64",
+    "os": "linux",
+    "digest": "sha256:234622966e5f1eb41f0fd6ffc5c96b1910e8f67835954c5d1ff44dcfc5321d99",
+    "created": "2026-03-11 20:26",
+    "labels": {
+      "dev.chainguard.image.title": "wolfi-base",
+      "dev.chainguard.package.main": "",
+      "org.opencontainers.image.authors": "Chainguard Team https://www.chainguard.dev/",
+      "org.opencontainers.image.created": "2026-03-11T01:14:48Z",
+      "org.opencontainers.image.source": "https://github.com/chainguard-images/images/tree/main/images/wolfi-base",
+      "org.opencontainers.image.title": "wolfi-base",
+      "org.opencontainers.image.url": "https://images.chainguard.dev/directory/image/wolfi-base/overview",
+      "org.opencontainers.image.vendor": "Chainguard"
+    },
+    "entrypoint": [
+      "docker/prod_entrypoint.sh"
+    ],
+    "cmd": [
+      "--port",
+      "4000"
+    ],
+    "sboms": [
+      {
+        "path": "sboms/ai-containers-litellm-database-v1.82.0-stable-cyclonedx.json",
+        "format": "CycloneDX"
+      }
+    ],
+    "vulnerabilities": {
+      "scan_date": "2026-03-13 20:47",
+      "total": 16,
+      "critical": 0,
+      "high": 16,
+      "medium": 0,
+      "low": 0,
+      "details_path": "vulns/ai-containers-litellm-database-v1.82.0-stable-vulns.json"
     }
   },
   {
@@ -681,10 +886,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 142,
+      "scan_date": "2026-03-13 20:47",
+      "total": 148,
       "critical": 3,
-      "high": 23,
+      "high": 26,
       "medium": 44,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-vulns.json"
@@ -720,10 +925,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 1928,
+      "scan_date": "2026-03-13 20:47",
+      "total": 1929,
       "critical": 0,
-      "high": 33,
+      "high": 34,
       "medium": 1712,
       "low": 183,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-gpu-amd-vulns.json"
@@ -759,10 +964,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 339,
+      "scan_date": "2026-03-13 20:47",
+      "total": 340,
       "critical": 0,
-      "high": 18,
+      "high": 19,
       "medium": 227,
       "low": 94,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-gpu-nvidia-vulns.json"
@@ -796,10 +1001,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 142,
+      "scan_date": "2026-03-13 20:47",
+      "total": 148,
       "critical": 3,
-      "high": 23,
+      "high": 26,
       "medium": 44,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-unprivileged-vulns.json"
@@ -833,10 +1038,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 142,
+      "scan_date": "2026-03-13 20:47",
+      "total": 148,
       "critical": 3,
-      "high": 23,
+      "high": 26,
       "medium": 44,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-vulns.json"
@@ -872,10 +1077,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 1928,
+      "scan_date": "2026-03-13 20:47",
+      "total": 1929,
       "critical": 0,
-      "high": 33,
+      "high": 34,
       "medium": 1712,
       "low": 183,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-gpu-amd-vulns.json"
@@ -911,10 +1116,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 339,
+      "scan_date": "2026-03-13 20:47",
+      "total": 340,
       "critical": 0,
-      "high": 18,
+      "high": 19,
       "medium": 227,
       "low": 94,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-gpu-nvidia-vulns.json"
@@ -948,10 +1153,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 142,
+      "scan_date": "2026-03-13 20:47",
+      "total": 148,
       "critical": 3,
-      "high": 23,
+      "high": 26,
       "medium": 44,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-unprivileged-vulns.json"
@@ -985,10 +1190,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 89,
+      "scan_date": "2026-03-13 20:47",
+      "total": 95,
       "critical": 0,
-      "high": 11,
+      "high": 14,
       "medium": 8,
       "low": 69,
       "details_path": "vulns/ai-containers-qdrant-v1.17.0-vulns.json"
@@ -1024,10 +1229,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 17:01",
-      "total": 278,
+      "scan_date": "2026-03-13 20:47",
+      "total": 279,
       "critical": 0,
-      "high": 12,
+      "high": 13,
       "medium": 181,
       "low": 85,
       "details_path": "vulns/ai-containers-qdrant-v1.17.0-gpu-nvidia-vulns.json"

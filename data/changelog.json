@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-03-13 20:47",
+    "changes": [
+      "New Container (Registry): ai/containers/litellm:1.82.1 (x86_64)",
+      "New Container (Registry): ai/containers/litellm:v1.81.15 (x86_64)",
+      "New Container (Registry): ai/containers/litellm:v1.82.0-stable (x86_64)",
+      "New Container (Registry): ai/containers/litellm-database:1.82.1 (x86_64)",
+      "New Container (Registry): ai/containers/litellm-database:v1.81.15 (x86_64)",
+      "New Container (Registry): ai/containers/litellm-database:v1.82.0-stable (x86_64)"
+    ]
+  },
+  {
     "date": "2026-03-13 16:03",
     "changes": [
       "New Chart (AppCo): ollama:1.38.0-12.1 (N/A)"
