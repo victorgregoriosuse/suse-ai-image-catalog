@@ -21,7 +21,7 @@
       "high": 43,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13T13:18:03.566311Z",
+      "scan_date": "2026-03-13T16:03:52.197788Z",
       "source": "aggregated",
       "component_count": 1
     }
@@ -48,7 +48,7 @@
       "high": 43,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13T13:18:03.566311Z",
+      "scan_date": "2026-03-13T16:03:52.197788Z",
       "source": "aggregated",
       "component_count": 1
     }
@@ -74,7 +74,7 @@
       "high": 23,
       "medium": 44,
       "low": 71,
-      "scan_date": "2026-03-13T13:18:05.308598Z",
+      "scan_date": "2026-03-13T16:03:54.415605Z",
       "source": "aggregated",
       "component_count": 1
     }
@@ -111,7 +111,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:02.845023Z",
+      "scan_date": "2026-03-13T16:03:51.239171Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -152,7 +152,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:02.940359Z",
+      "scan_date": "2026-03-13T16:03:51.364786Z",
       "total": 61,
       "critical": 1,
       "high": 34,
@@ -193,7 +193,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.039300Z",
+      "scan_date": "2026-03-13T16:03:51.504585Z",
       "total": 90,
       "critical": 3,
       "high": 37,
@@ -234,7 +234,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.153131Z",
+      "scan_date": "2026-03-13T16:03:51.659345Z",
       "total": 39,
       "critical": 0,
       "high": 29,
@@ -275,7 +275,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.266251Z",
+      "scan_date": "2026-03-13T16:03:51.815150Z",
       "total": 51,
       "critical": 0,
       "high": 36,
@@ -316,7 +316,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.360035Z",
+      "scan_date": "2026-03-13T16:03:51.927621Z",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -357,7 +357,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.466803Z",
+      "scan_date": "2026-03-13T16:03:52.068799Z",
       "total": 49,
       "critical": 0,
       "high": 33,
@@ -398,7 +398,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.566311Z",
+      "scan_date": "2026-03-13T16:03:52.197788Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -439,7 +439,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.664623Z",
+      "scan_date": "2026-03-13T16:03:52.339425Z",
       "total": 101,
       "critical": 3,
       "high": 43,
@@ -480,7 +480,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.768663Z",
+      "scan_date": "2026-03-13T16:03:52.462448Z",
       "total": 90,
       "critical": 3,
       "high": 37,
@@ -521,7 +521,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:03.882769Z",
+      "scan_date": "2026-03-13T16:03:52.612129Z",
       "total": 39,
       "critical": 0,
       "high": 29,
@@ -562,7 +562,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.006859Z",
+      "scan_date": "2026-03-13T16:03:52.780683Z",
       "total": 51,
       "critical": 0,
       "high": 36,
@@ -603,7 +603,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.105820Z",
+      "scan_date": "2026-03-13T16:03:52.923870Z",
       "total": 43,
       "critical": 0,
       "high": 27,
@@ -644,7 +644,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.213893Z",
+      "scan_date": "2026-03-13T16:03:53.064368Z",
       "total": 49,
       "critical": 0,
       "high": 33,
@@ -681,7 +681,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.385743Z",
+      "scan_date": "2026-03-13T16:03:53.275457Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -720,7 +720,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.755496Z",
+      "scan_date": "2026-03-13T16:03:53.740382Z",
       "total": 1928,
       "critical": 0,
       "high": 33,
@@ -759,7 +759,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:04.955726Z",
+      "scan_date": "2026-03-13T16:03:53.980987Z",
       "total": 339,
       "critical": 0,
       "high": 18,
@@ -796,7 +796,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:05.131916Z",
+      "scan_date": "2026-03-13T16:03:54.191995Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -833,7 +833,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:05.308598Z",
+      "scan_date": "2026-03-13T16:03:54.415605Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -872,7 +872,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:05.663523Z",
+      "scan_date": "2026-03-13T16:03:54.839476Z",
       "total": 1928,
       "critical": 0,
       "high": 33,
@@ -911,7 +911,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:05.852854Z",
+      "scan_date": "2026-03-13T16:03:55.056214Z",
       "total": 339,
       "critical": 0,
       "high": 18,
@@ -948,7 +948,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:06.022599Z",
+      "scan_date": "2026-03-13T16:03:55.236892Z",
       "total": 142,
       "critical": 3,
       "high": 23,
@@ -985,7 +985,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:06.195372Z",
+      "scan_date": "2026-03-13T16:03:55.418077Z",
       "total": 89,
       "critical": 0,
       "high": 11,
@@ -1024,7 +1024,7 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13T13:18:06.380729Z",
+      "scan_date": "2026-03-13T16:03:55.622948Z",
       "total": 278,
       "critical": 0,
       "high": 12,

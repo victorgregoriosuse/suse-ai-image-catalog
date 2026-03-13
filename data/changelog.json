@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-03-13 16:03",
+    "changes": [
+      "New Chart (AppCo): ollama:1.38.0-12.1 (N/A)"
+    ]
+  },
+  {
     "date": "2026-03-13 02:45",
     "changes": [
       "New Container (AppCo): ollama:0.14.2-11.26 (aarch64)",
