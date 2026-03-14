@@ -16,12 +16,12 @@
       "bci/bci-busybox"
     ],
     "vulnerabilities": {
-      "total": 101,
+      "total": 102,
       "critical": 3,
-      "high": 43,
+      "high": 44,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13 20:47",
+      "scan_date": "2026-03-14 02:43",
       "source": "aggregated",
       "component_count": 1
     }
@@ -43,12 +43,12 @@
       "bci/bci-busybox"
     ],
     "vulnerabilities": {
-      "total": 101,
+      "total": 102,
       "critical": 3,
-      "high": 43,
+      "high": 44,
       "medium": 54,
       "low": 1,
-      "scan_date": "2026-03-13 20:47",
+      "scan_date": "2026-03-14 02:43",
       "source": "aggregated",
       "component_count": 1
     }
@@ -69,12 +69,12 @@
       "bci/bci-base:latest"
     ],
     "vulnerabilities": {
-      "total": 148,
+      "total": 153,
       "critical": 3,
-      "high": 26,
-      "medium": 44,
+      "high": 29,
+      "medium": 46,
       "low": 71,
-      "scan_date": "2026-03-13 20:47",
+      "scan_date": "2026-03-14 02:43",
       "source": "aggregated",
       "component_count": 1
     }
@@ -111,10 +111,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 101,
+      "scan_date": "2026-03-14 02:43",
+      "total": 102,
       "critical": 3,
-      "high": 43,
+      "high": 44,
       "medium": 54,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-1.80.15-stable.1-vulns.json"
@@ -152,10 +152,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 12,
+      "scan_date": "2026-03-14 02:43",
+      "total": 13,
       "critical": 0,
-      "high": 9,
+      "high": 10,
       "medium": 3,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-1.82.1-vulns.json"
@@ -193,10 +193,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 61,
+      "scan_date": "2026-03-14 02:43",
+      "total": 62,
       "critical": 1,
-      "high": 34,
+      "high": 35,
       "medium": 25,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-v1.80.15-stable-vulns.json"
@@ -234,10 +234,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 90,
+      "scan_date": "2026-03-14 02:43",
+      "total": 91,
       "critical": 3,
-      "high": 37,
+      "high": 38,
       "medium": 49,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-v1.81.0-stable-vulns.json"
@@ -275,10 +275,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 51,
+      "scan_date": "2026-03-14 02:43",
+      "total": 52,
       "critical": 0,
-      "high": 36,
+      "high": 37,
       "medium": 13,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-v1.81.13-vulns.json"
@@ -316,10 +316,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 24,
+      "scan_date": "2026-03-14 02:43",
+      "total": 25,
       "critical": 0,
-      "high": 17,
+      "high": 18,
       "medium": 7,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-v1.81.15-vulns.json"
@@ -357,10 +357,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 43,
+      "scan_date": "2026-03-14 02:43",
+      "total": 44,
       "critical": 0,
-      "high": 27,
+      "high": 28,
       "medium": 15,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-v1.81.3-stable-vulns.json"
@@ -398,10 +398,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 49,
+      "scan_date": "2026-03-14 02:43",
+      "total": 50,
       "critical": 0,
-      "high": 33,
+      "high": 34,
       "medium": 14,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-v1.81.9-stable-vulns.json"
@@ -439,10 +439,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 8,
+      "scan_date": "2026-03-14 02:43",
+      "total": 9,
       "critical": 0,
-      "high": 8,
+      "high": 9,
       "medium": 0,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-v1.82.0-stable-vulns.json"
@@ -480,10 +480,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 101,
+      "scan_date": "2026-03-14 02:43",
+      "total": 102,
       "critical": 3,
-      "high": 43,
+      "high": 44,
       "medium": 54,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-database-1.80.15-stable.1-vulns.json"
@@ -521,10 +521,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 20,
+      "scan_date": "2026-03-14 02:43",
+      "total": 21,
       "critical": 0,
-      "high": 17,
+      "high": 18,
       "medium": 3,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-database-1.82.1-vulns.json"
@@ -562,10 +562,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 101,
+      "scan_date": "2026-03-14 02:43",
+      "total": 102,
       "critical": 3,
-      "high": 43,
+      "high": 44,
       "medium": 54,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-database-v1.80.15-stable-vulns.json"
@@ -603,10 +603,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 90,
+      "scan_date": "2026-03-14 02:43",
+      "total": 91,
       "critical": 3,
-      "high": 37,
+      "high": 38,
       "medium": 49,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.0-stable-vulns.json"
@@ -644,10 +644,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 39,
+      "scan_date": "2026-03-14 02:43",
+      "total": 40,
       "critical": 0,
-      "high": 29,
+      "high": 30,
       "medium": 8,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.12-stable-vulns.json"
@@ -685,10 +685,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 51,
+      "scan_date": "2026-03-14 02:43",
+      "total": 52,
       "critical": 0,
-      "high": 36,
+      "high": 37,
       "medium": 13,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.13-vulns.json"
@@ -726,10 +726,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 24,
+      "scan_date": "2026-03-14 02:43",
+      "total": 25,
       "critical": 0,
-      "high": 17,
+      "high": 18,
       "medium": 7,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.15-vulns.json"
@@ -767,10 +767,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 43,
+      "scan_date": "2026-03-14 02:43",
+      "total": 44,
       "critical": 0,
-      "high": 27,
+      "high": 28,
       "medium": 15,
       "low": 1,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.3-stable-vulns.json"
@@ -808,10 +808,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 49,
+      "scan_date": "2026-03-14 02:43",
+      "total": 50,
       "critical": 0,
-      "high": 33,
+      "high": 34,
       "medium": 14,
       "low": 2,
       "details_path": "vulns/ai-containers-litellm-database-v1.81.9-stable-vulns.json"
@@ -849,10 +849,10 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 16,
+      "scan_date": "2026-03-14 02:43",
+      "total": 17,
       "critical": 0,
-      "high": 16,
+      "high": 17,
       "medium": 0,
       "low": 0,
       "details_path": "vulns/ai-containers-litellm-database-v1.82.0-stable-vulns.json"
@@ -886,11 +886,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 148,
+      "scan_date": "2026-03-14 02:43",
+      "total": 153,
       "critical": 3,
-      "high": 26,
-      "medium": 44,
+      "high": 29,
+      "medium": 46,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-vulns.json"
     }
@@ -925,11 +925,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 1929,
+      "scan_date": "2026-03-14 02:43",
+      "total": 1934,
       "critical": 0,
-      "high": 34,
-      "medium": 1712,
+      "high": 37,
+      "medium": 1714,
       "low": 183,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-gpu-amd-vulns.json"
     }
@@ -964,11 +964,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 340,
+      "scan_date": "2026-03-14 02:43",
+      "total": 345,
       "critical": 0,
-      "high": 19,
-      "medium": 227,
+      "high": 22,
+      "medium": 229,
       "low": 94,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-gpu-nvidia-vulns.json"
     }
@@ -1001,11 +1001,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 148,
+      "scan_date": "2026-03-14 02:43",
+      "total": 153,
       "critical": 3,
-      "high": 26,
-      "medium": 44,
+      "high": 29,
+      "medium": 46,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.2-unprivileged-vulns.json"
     }
@@ -1038,11 +1038,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 148,
+      "scan_date": "2026-03-14 02:43",
+      "total": 153,
       "critical": 3,
-      "high": 26,
-      "medium": 44,
+      "high": 29,
+      "medium": 46,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-vulns.json"
     }
@@ -1077,11 +1077,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 1929,
+      "scan_date": "2026-03-14 02:43",
+      "total": 1934,
       "critical": 0,
-      "high": 34,
-      "medium": 1712,
+      "high": 37,
+      "medium": 1714,
       "low": 183,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-gpu-amd-vulns.json"
     }
@@ -1116,11 +1116,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 340,
+      "scan_date": "2026-03-14 02:43",
+      "total": 345,
       "critical": 0,
-      "high": 19,
-      "medium": 227,
+      "high": 22,
+      "medium": 229,
       "low": 94,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-gpu-nvidia-vulns.json"
     }
@@ -1153,11 +1153,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 148,
+      "scan_date": "2026-03-14 02:43",
+      "total": 153,
       "critical": 3,
-      "high": 26,
-      "medium": 44,
+      "high": 29,
+      "medium": 46,
       "low": 71,
       "details_path": "vulns/ai-containers-qdrant-v1.16.3-unprivileged-vulns.json"
     }
@@ -1190,11 +1190,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 95,
+      "scan_date": "2026-03-14 02:43",
+      "total": 100,
       "critical": 0,
-      "high": 14,
-      "medium": 8,
+      "high": 17,
+      "medium": 10,
       "low": 69,
       "details_path": "vulns/ai-containers-qdrant-v1.17.0-vulns.json"
     }
@@ -1229,11 +1229,11 @@
       }
     ],
     "vulnerabilities": {
-      "scan_date": "2026-03-13 20:47",
-      "total": 279,
+      "scan_date": "2026-03-14 02:43",
+      "total": 284,
       "critical": 0,
-      "high": 13,
-      "medium": 181,
+      "high": 16,
+      "medium": 183,
       "low": 85,
       "details_path": "vulns/ai-containers-qdrant-v1.17.0-gpu-nvidia-vulns.json"
     }
