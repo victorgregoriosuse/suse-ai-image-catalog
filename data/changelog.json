@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-03-16 17:14",
+    "changes": [
+      "New Chart (Registry): ai/charts/litellm:1.81.13 (N/A)",
+      "New Chart (Registry): ai/charts/litellm:1.81.14-stable (N/A)",
+      "New Chart (Registry): ai/charts/litellm:1.81.3-stable (N/A)",
+      "New Chart (Registry): ai/charts/litellm:1.81.9-stable (N/A)",
+      "New Chart (Registry): ai/charts/qdrant:1.17.0 (N/A)"
+    ]
+  },
+  {
     "date": "2026-03-13 20:47",
     "changes": [
       "New Container (Registry): ai/containers/litellm:1.82.1 (x86_64)",
