@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-03-19 13:25",
+    "changes": [
+      "New Container (AppCo): suse-ai-observability-extension-setup:1.5.0-5.10 (aarch64)",
+      "New Container (AppCo): suse-ai-observability-extension-setup:1.5.0-5.10 (x86_64)"
+    ]
+  },
+  {
     "date": "2026-03-18 20:50",
     "changes": [
       "New Container (AppCo): ollama:0.14.2-11.28 (aarch64)",

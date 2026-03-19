@@ -7079,32 +7079,32 @@
     "application": "suse-ai-observability-extension",
     "app_logo_url": "https://apps.rancher.io/logos/suse-ai-observability-extension.png",
     "component": "suse-ai-observability-extension-setup",
-    "image_name": "suse-ai-observability-extension-setup:1.5.0-5.9",
+    "image_name": "suse-ai-observability-extension-setup:1.5.0-5.10",
     "version": "1.5.0",
     "packaging_format": "CONTAINER",
     "architecture": "aarch64",
     "os_family": "SLE",
     "os_version": "15.7",
-    "digest": "SHA256:6c8e4524baadc8fa56eb9cdbbb9aab7b1b1f95f19b18398dc0af2160bc6afa59",
-    "last_updated": "2026-03-18 18:54",
+    "digest": "SHA256:df71031c41f54c00b5607c83219851c98532c70a871793a6e60ea9998f2ceb0e",
+    "last_updated": "2026-03-19 09:20",
     "sboms": [
       {
         "type": "SBOM",
         "format": "CYCLONEDX",
-        "filename": "suse-ai-observability-extension-setup-1.5.0-5.9.aarch64.cdx.json"
+        "filename": "suse-ai-observability-extension-setup-1.5.0-5.10.aarch64.cdx.json"
       },
       {
         "type": "SBOM",
         "format": "SPDX",
-        "filename": "suse-ai-observability-extension-setup-1.5.0-5.9.aarch64.spdx.json"
+        "filename": "suse-ai-observability-extension-setup-1.5.0-5.10.aarch64.spdx.json"
       }
     ],
     "labels": {
       "org.opencontainers.image.base.digest": "sha256:efa3c966c02cd19e52d6c2d3ed6f8d186cf7d46f4df695d376f92d6b07527738",
       "org.opencontainers.image.base.name": "registry.suse.com/bci/bci-micro:15.7-56.3",
-      "org.opencontainers.image.created": "2026-03-18T13:18:56.226075840Z",
+      "org.opencontainers.image.created": "2026-03-19T09:08:27.810486880Z",
       "org.opencontainers.image.description": "Configures and manages AI-specific UI elements in SUSE Observability",
-      "org.opencontainers.image.ref.name": "1.5.0-5.9",
+      "org.opencontainers.image.ref.name": "1.5.0-5.10",
       "org.opencontainers.image.source": "https://sources.suse.com/Product:SUSE-AI:SLE-15-SP7/suse-ai-observability-extension-setup-container/c6d3bac3c0f45957f725bb6d10bd4638/",
       "org.opencontainers.image.title": "SUSE AI Observability Extension Setup",
       "org.opencontainers.image.url": "https://apps.rancher.io/applications/suse-ai-observability-extension",
@@ -7119,39 +7119,39 @@
       "medium": 0,
       "low": 0,
       "source": "apps.rancher.io",
-      "artifact_url": "https://apps.rancher.io/artifacts/6c8e4524baadc8fa56eb9cdbbb9aab7b1b1f95f19b18398dc0af2160bc6afa59"
+      "artifact_url": "https://apps.rancher.io/artifacts/df71031c41f54c00b5607c83219851c98532c70a871793a6e60ea9998f2ceb0e"
     }
   },
   {
     "application": "suse-ai-observability-extension",
     "app_logo_url": "https://apps.rancher.io/logos/suse-ai-observability-extension.png",
     "component": "suse-ai-observability-extension-setup",
-    "image_name": "suse-ai-observability-extension-setup:1.5.0-5.9",
+    "image_name": "suse-ai-observability-extension-setup:1.5.0-5.10",
     "version": "1.5.0",
     "packaging_format": "CONTAINER",
     "architecture": "x86_64",
     "os_family": "SLE",
     "os_version": "15.7",
-    "digest": "SHA256:68ab8ba22e303587ce846935b73a77724755b870e1d1d83c4a7208887c5b132b",
-    "last_updated": "2026-03-18 18:54",
+    "digest": "SHA256:404e8254f1d0092e1da629e2d774342e0c8669edd4fb7f99517fd70aa347f2d0",
+    "last_updated": "2026-03-19 09:20",
     "sboms": [
       {
         "type": "SBOM",
         "format": "CYCLONEDX",
-        "filename": "suse-ai-observability-extension-setup-1.5.0-5.9.x86_64.cdx.json"
+        "filename": "suse-ai-observability-extension-setup-1.5.0-5.10.x86_64.cdx.json"
       },
       {
         "type": "SBOM",
         "format": "SPDX",
-        "filename": "suse-ai-observability-extension-setup-1.5.0-5.9.x86_64.spdx.json"
+        "filename": "suse-ai-observability-extension-setup-1.5.0-5.10.x86_64.spdx.json"
       }
     ],
     "labels": {
       "org.opencontainers.image.base.digest": "sha256:147bd19f5f2e2b4773e8a7641145cdadc4fe6cc0186c211bfa9a1d5a49db0d0b",
       "org.opencontainers.image.base.name": "registry.suse.com/bci/bci-micro:15.7-56.3",
-      "org.opencontainers.image.created": "2026-03-18T13:23:34.719446081Z",
+      "org.opencontainers.image.created": "2026-03-19T09:13:04.156573310Z",
       "org.opencontainers.image.description": "Configures and manages AI-specific UI elements in SUSE Observability",
-      "org.opencontainers.image.ref.name": "1.5.0-5.9",
+      "org.opencontainers.image.ref.name": "1.5.0-5.10",
       "org.opencontainers.image.source": "https://sources.suse.com/Product:SUSE-AI:SLE-15-SP7/suse-ai-observability-extension-setup-container/c6d3bac3c0f45957f725bb6d10bd4638/",
       "org.opencontainers.image.title": "SUSE AI Observability Extension Setup",
       "org.opencontainers.image.url": "https://apps.rancher.io/applications/suse-ai-observability-extension",
@@ -7166,7 +7166,7 @@
       "medium": 0,
       "low": 0,
       "source": "apps.rancher.io",
-      "artifact_url": "https://apps.rancher.io/artifacts/68ab8ba22e303587ce846935b73a77724755b870e1d1d83c4a7208887c5b132b"
+      "artifact_url": "https://apps.rancher.io/artifacts/404e8254f1d0092e1da629e2d774342e0c8669edd4fb7f99517fd70aa347f2d0"
     }
   },
   {
