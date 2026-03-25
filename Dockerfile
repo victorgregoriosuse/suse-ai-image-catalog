@@ -1,5 +1,5 @@
-# Use SUSE BCI Python 3.11 as base (Explicitly target x86_64)
-FROM --platform=linux/amd64 registry.suse.com/bci/python:3.11
+ARG BUILDPLATFORM=linux/amd64
+FROM --platform=${BUILDPLATFORM} registry.suse.com/bci/python:3.11
 
 # Install system dependencies
 RUN zypper install -y curl tar gzip jq && \
