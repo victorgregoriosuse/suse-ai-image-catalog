@@ -540,7 +540,26 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body" id="modalContent"></div>
+            <div class="modal-body">
+                <div class="mb-4">
+                    <h6>Full Image Path</h6>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="pathInput" readonly>
+                        <button class="btn btn-outline-success btn-sm" onclick="copyPath(event)">Copy</button>
+                    </div>
+                </div>
+                <div id="originContainer" class="mb-3"></div>
+                <div class="row mb-3">
+                    <div class="col-md-6"><strong>Digest:</strong> <code id="modalDigest" class="text-break"></code></div>
+                    <div class="col-md-6"><strong>Updated:</strong> <span id="modalUpdated"></span></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4"><strong>Arch:</strong> <span id="modalArch" class="badge badge-arch"></span></div>
+                    <div class="col-md-4"><strong>Base OS:</strong> <span id="modalOS"></span></div>
+                </div>
+                <div id="sbomContainer" class="mb-3"></div>
+                <div id="modalJsonBlock" class="json-block mt-3"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -587,42 +606,75 @@
     function showDetails(dataStr, fullName, logoUrl, anchorId) {
         const data = JSON.parse(decodeURIComponent(dataStr));
         document.getElementById('modalTitle').textContent = data.image_name || data.name;
-        const logoContainer = document.getElementById('modalLogoContainer');
-        logoContainer.innerHTML = (logoUrl && logoUrl !== 'None') ? `<img src="${logoUrl}" class="modal-logo">` : '';
-        const digest = data.digest || 'N/A';
-        const updated = data.last_updated || data.created || 'N/A';
-        const arch = data.architecture || 'N/A';
-        const os = data.os || (data.os_family ? (data.os_family + ' ' + (data.os_version || '')) : 'N/A');
         
+        const logoContainer = document.getElementById('modalLogoContainer');
+        logoContainer.innerHTML = ''; // Safe because it's only logoUrl
+        if (logoUrl && logoUrl !== 'None') {
+            const logoImg = document.createElement('img');
+            logoImg.src = logoUrl;
+            logoImg.className = 'modal-logo';
+            logoContainer.appendChild(logoImg);
+        }
+
         if (anchorId) history.replaceState(null, null, '#' + anchorId);
 
-        let originHtml = '';
+        // Safely set basic fields
+        document.getElementById('pathInput').value = fullName;
+        document.getElementById('modalDigest').textContent = data.digest || 'N/A';
+        document.getElementById('modalUpdated').textContent = data.last_updated || data.created || 'N/A';
+        document.getElementById('modalArch').textContent = data.architecture || 'N/A';
+        document.getElementById('modalOS').textContent = data.os || (data.os_family ? (data.os_family + ' ' + (data.os_version || '')) : 'N/A');
+
+        // Safely handle Origin Link
+        const originContainer = document.getElementById('originContainer');
+        originContainer.innerHTML = '';
         if (data.origin_url) {
-            originHtml = `<div class="mb-3"><strong>AppCo Artifact Page:</strong> <a href="${data.origin_url}" target="_blank" class="ms-1 text-decoration-none"><i class="bi bi-box-arrow-up-right me-1"></i>View on AppCo</a></div>`;
+            const label = document.createElement('strong');
+            label.textContent = 'AppCo Artifact Page: ';
+            originContainer.appendChild(label);
+            
+            const link = document.createElement('a');
+            link.href = data.origin_url;
+            link.target = '_blank';
+            link.className = 'ms-1 text-decoration-none';
+            
+            const icon = document.createElement('i');
+            icon.className = 'bi bi-box-arrow-up-right me-1';
+            link.appendChild(icon);
+            link.appendChild(document.createTextNode('View on AppCo'));
+            
+            originContainer.appendChild(link);
         }
 
-        let sbomHtml = '';
+        // Safely handle SBOMs
+        const sbomContainer = document.getElementById('sbomContainer');
+        sbomContainer.innerHTML = '';
         if (data.processed_sboms && data.processed_sboms.length > 0) {
-            sbomHtml = '<div class="mb-3"><strong>SBOMs:</strong><div class="mt-1">';
+            const label = document.createElement('strong');
+            label.textContent = 'SBOMs:';
+            sbomContainer.appendChild(label);
+            
+            const div = document.createElement('div');
+            div.className = 'mt-1';
             data.processed_sboms.forEach(sbom => {
-                sbomHtml += `<a href="${sbom.url}" target="_blank" class="btn btn-sm btn-outline-info me-2 mb-2"><i class="bi bi-file-earmark-text me-1"></i>${sbom.format}</a>`;
+                const btn = document.createElement('a');
+                btn.href = sbom.url;
+                btn.target = '_blank';
+                btn.className = 'btn btn-sm btn-outline-info me-2 mb-2';
+                
+                const icon = document.createElement('i');
+                icon.className = 'bi bi-file-earmark-text me-1';
+                btn.appendChild(icon);
+                btn.appendChild(document.createTextNode(sbom.format));
+                
+                div.appendChild(btn);
             });
-            sbomHtml += '</div></div>';
+            sbomContainer.appendChild(div);
         }
 
-        document.getElementById('modalContent').innerHTML = `
-            <div class="mb-4"><h6>Full Image Path</h6><div class="input-group"><input type="text" class="form-control" value="${fullName}" id="pathInput" readonly><button class="btn btn-outline-success btn-sm" onclick="copyPath(event)">Copy</button></div></div>
-            ${originHtml}
-            <div class="row mb-3">
-                <div class="col-md-6"><strong>Digest:</strong> <code class="text-break">${digest}</code></div>
-                <div class="col-md-6"><strong>Updated:</strong> ${updated}</div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4"><strong>Arch:</strong> <span class="badge badge-arch">${arch}</span></div>
-                <div class="col-md-4"><strong>Base OS:</strong> ${os}</div>
-            </div>
-            ${sbomHtml}
-            <div class="json-block mt-3">${JSON.stringify(data, null, 2)}</div>`;
+        // Safely render JSON block
+        document.getElementById('modalJsonBlock').textContent = JSON.stringify(data, null, 2);
+        
         detailsModal.show();
     }
 
