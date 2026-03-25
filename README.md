@@ -56,6 +56,14 @@ This script handles the entire workflow, updating the changelog only when change
 python run_all.py
 ```
 
+## Testing
+
+To run the automated unit tests, ensure `pytest` is installed and run:
+```bash
+export PYTHONPATH=$PYTHONPATH:.
+pytest tests/
+```
+
 ### Manual Steps
 You can still run individual components if needed:
 1. **Fetch AppCo Data**: `python fetch_suse_ai_images.py`
@@ -76,6 +84,7 @@ You can still run individual components if needed:
 - `static/`: Static assets (logos, favicons) served with the dashboard.
 - `sboms/`: Local cache for extracted CycloneDX SBOMs (Ignored by Git).
 - `vulns/`: Local cache for Trivy vulnerability scan results (Ignored by Git).
+- `tests/`: Directory containing automated unit tests.
 - `index.html`: The generated interactive report (Ignored by Git).
 
 ## Disclaimer
