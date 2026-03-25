@@ -9,7 +9,7 @@ services:
     environment:
       - REGISTRY_USER=${REGISTRY_USER:-}
       - REGISTRY_PASSWORD=${REGISTRY_PASSWORD:-}
-    command: python run_all.py
+    command: python3 run_all.py
 
   dashboard:
     image: nginx:stable-alpine

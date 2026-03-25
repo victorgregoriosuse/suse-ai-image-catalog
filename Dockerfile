@@ -21,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Default command is to run the full pipeline
-CMD ["python", "run_all.py"]
+CMD ["python3", "run_all.py"]
