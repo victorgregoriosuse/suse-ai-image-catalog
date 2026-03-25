@@ -30,10 +30,10 @@ An automated toolset designed to aggregate, process, and visualize container ima
 
 ## Prerequisites
 
-- **Python 3.10+**
-- **crane** and **cosign**: Must be installed and available in your PATH.
-- **trivy**: Must be installed and available in your PATH for vulnerability scanning.
-- **Registry Credentials**: Optional but recommended for automated CI environments. Set `REGISTRY_USER` and `REGISTRY_PASSWORD` as Environment Secrets in GitHub.
+- **Docker and Docker Compose**: Optional, for running the toolset in a containerized environment.
+- **Python 3.10+** (if running locally)
+- **crane**, **cosign**, and **trivy** (if running locally): Must be available in your PATH.
+- **Registry Credentials**: Optional but recommended for automated CI environments or for scanning protected registries.
 
 ## Setup
 
@@ -48,13 +48,24 @@ An automated toolset designed to aggregate, process, and visualize container ima
 
 ## Usage
 
-The toolset is designed to be run via an orchestration script that manages data collection, change detection, and dashboard generation.
+The toolset is designed to be run via an orchestration script or via Docker.
 
-### Run All (Recommended)
-This script handles the entire workflow, updating the changelog only when changes are detected and conditionally rebuilding the dashboard.
-```bash
-python run_all.py
-```
+### Run with Docker
+This is a containerized way to run the entire pipeline without installing local dependencies.
+1. **Configure Credentials:** Copy `.env.example` to `.env` and add your `REGISTRY_USER` and `REGISTRY_PASSWORD`.
+2. **Launch:**
+   ```bash
+   docker compose up --build
+   ```
+The updater will run the full data collection and scanning pipeline. Once complete, the dashboard will be available at `http://localhost:8080`.
+
+### Run Locally
+This handles the entire workflow, updating the changelog only when changes are detected and conditionally rebuilding the dashboard.
+1. **Install Dependencies:** `pip install -r requirements.txt`
+2. **Launch:**
+   ```bash
+   python run_all.py
+   ```
 
 ### Manual Steps
 You can still run individual components if needed:
