@@ -1,0 +1,23 @@
+services:
+  updater:
+    build:
+      context: .
+      platforms:
+        - "linux/amd64"
+    volumes:
+      - .:/app
+    environment:
+      - REGISTRY_USER=${REGISTRY_USER:-}
+      - REGISTRY_PASSWORD=${REGISTRY_PASSWORD:-}
+    command: python run_all.py
+
+  dashboard:
+    image: nginx:stable-alpine
+    platform: linux/amd64
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/usr/share/nginx/html:ro
+    depends_on:
+      updater:
+        condition: service_completed_successfully
