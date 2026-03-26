@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-03-26 09:55",
+    "changes": [
+      "New Container (AppCo): milvus:2.6.13-4.4 (aarch64)",
+      "New Container (AppCo): milvus:2.6.13-4.4 (x86_64)",
+      "New Chart (AppCo): milvus:5.0.16-9.1 (N/A)",
+      "New Chart (AppCo): milvus:5.0.15-8.1 (N/A)",
+      "New Container (AppCo): mlflow:3.10.1-8.4 (aarch64)",
+      "New Container (AppCo): mlflow:3.10.1-8.4 (x86_64)",
+      "New Container (AppCo): mlflow:2.22.4-11.3 (aarch64)",
+      "New Container (AppCo): mlflow:2.22.4-11.3 (x86_64)",
+      "New Container (AppCo): open-webui:0.6.41-14.40 (aarch64)",
+      "New Container (AppCo): open-webui:0.6.41-14.40 (x86_64)",
+      "New Container (AppCo): open-webui-mcpo:0.0.17-2.35 (aarch64)",
+      "New Container (AppCo): open-webui-mcpo:0.0.17-2.35 (x86_64)",
+      "New Container (AppCo): open-webui-pipelines:0.20250819.030501-8.34 (aarch64)",
+      "New Container (AppCo): open-webui-pipelines:0.20250819.030501-8.34 (x86_64)",
+      "New Container (AppCo): pytorch:2.9.1-nvidia-1.33 (aarch64)",
+      "New Container (AppCo): pytorch:2.9.1-nvidia-1.33 (x86_64)",
+      "New Chart (AppCo): suse-ai-observability-extension:1.5.0-7.1 (N/A)",
+      "New Container (AppCo): lmcache-lmstack-router:0.1.6-3.36 (aarch64)",
+      "New Container (AppCo): lmcache-lmstack-router:0.1.6-3.36 (x86_64)"
+    ]
+  },
+  {
     "date": "2026-03-19 13:25",
     "changes": [
       "New Container (AppCo): suse-ai-observability-extension-setup:1.5.0-5.10 (aarch64)",
