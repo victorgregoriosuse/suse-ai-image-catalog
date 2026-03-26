@@ -1,19 +1,39 @@
 ARG BUILDPLATFORM=linux/amd64
+# Revert to the Python base image
 FROM --platform=${BUILDPLATFORM} registry.suse.com/bci/python:3.11
 
-# Install system dependencies
-RUN zypper install -y curl tar gzip jq && \
-    # Install Crane
-    curl -L https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Linux_x86_64.tar.gz | tar -xz -C /usr/local/bin crane && \
-    # Install Cosign
-    curl -L https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64 -o /usr/local/bin/cosign && chmod +x /usr/local/bin/cosign && \
-    # Install Trivy
-    TRIVY_VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | grep tag_name | cut -d '"' -f 4 | sed 's/v//') && \
-    curl -L "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz" | tar -xz -C /usr/local/bin trivy
+# Install zypper if it's not present in the Python image
+RUN zypper --non-interactive install -y zypper
 
+# Install necessary tools for key import and package management
+RUN zypper --non-interactive install -y curl gnupg
+
+# Fetch the GPG key for the backports repository
+RUN curl -fsSL https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/repodata/repomd.xml.key -o /tmp/repo.key
+
+# Import the GPG key
+RUN rpm --import /tmp/repo.key
+
+# Clean up the temporary key file
+RUN rm /tmp/repo.key
+
+# Add the backports repository
+RUN zypper --non-interactive addrepo https://download.opensuse.org/repositories/openSUSE:Backports:SLE-15-SP7/standard/openSUSE:Backports:SLE-15-SP7.repo
+
+# Refresh repositories
+RUN zypper --non-interactive refresh
+
+# Install cosign, crane, and trivy from the backports repository
+# Trivy version 0.59.1 is from the backports repo and is now considered acceptable.
+RUN zypper --non-interactive install -y cosign crane trivy
+
+# Clean up zypper cache to reduce image size
+RUN zypper --non-interactive clean --all
+
+# Set working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Copy requirements and install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
