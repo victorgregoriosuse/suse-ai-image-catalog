@@ -43,7 +43,7 @@ jobs:
         uses: sigstore/cosign-installer@v3.8.1
 
       - name: Install Trivy
-        uses: aquasecurity/setup-trivy@v0.2.5
+        uses: aquasecurity/setup-trivy@e07451d2e059ed86c2870430ea286b3a9e0bf241
 
       - name: Setup Helm
         uses: azure/setup-helm@v4
